@@ -1,0 +1,28 @@
+{
+    "gdprModule": {
+        "blades": {
+            "hello-world": {
+                "title": "Hello world blade"
+            }
+        }
+    },
+    "permissions": {
+        "gdprModule:access": "Open gdprModule menu",
+        "gdprModule:create": "Create gdprModule related data",
+        "gdprModule:read": "View gdprModule related data",
+        "gdprModule:update": "Update gdprModule related data",
+        "gdprModule:delete": "Delete gdprModule related data"
+    },
+    "settings": {
+        "gdprModule": {
+            "gdprModulePassword": {
+                "title": "gdprModule Password",
+                "description": "gdprModule Password setting"
+            },
+            "gdprModuleEnabled": {
+                "title": "gdprModule Enabled",
+                "description": "gdprModule Enabled setting"
+            }
+        }
+    }
+}

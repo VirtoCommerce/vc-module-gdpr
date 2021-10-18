@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <id>VirtoCommerce.gdpr</id>
+    <version>1.0.0</version>
+    <version-tag></version-tag>
+    <platformVersion>3.84.0</platformVersion>
+    <dependencies>
+<!--        <dependency id="VirtoCommerce.Core" version="3.0.0" /> -->
+    </dependencies>
+
+    <title>VirtoCommerce gdpr extension module</title>
+    <description>VirtoCommerce gdpr extension module</description>
+
+    <authors>
+        <author>Leysan Nigmatullina</author>
+    </authors>
+    <owners>
+        <owner>VirtoCommerce</owner>
+    </owners>
+
+    <assemblyFile>VirtoCommerce.gdpr.Web.dll</assemblyFile>
+    <moduleType>VirtoCommerce.gdpr.Web.Module, VirtoCommerce.gdpr.Web</moduleType>
+
+    <releaseNotes>First version.</releaseNotes>
+    <copyright>Copyright © 2021 VirtoCommerce. All rights reserved</copyright>
+    <tags>extension module</tags>
+
+</module>
+
+
