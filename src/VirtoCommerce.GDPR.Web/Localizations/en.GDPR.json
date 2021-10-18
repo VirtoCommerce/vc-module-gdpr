@@ -1,0 +1,28 @@
+{
+    "GDPRModule": {
+        "blades": {
+            "hello-world": {
+                "title": "Hello world blade"
+            }
+        }
+    },
+    "permissions": {
+        "GDPRModule:access": "Open GDPRModule menu",
+        "GDPRModule:create": "Create GDPRModule related data",
+        "GDPRModule:read": "View GDPRModule related data",
+        "GDPRModule:update": "Update GDPRModule related data",
+        "GDPRModule:delete": "Delete GDPRModule related data"
+    },
+    "settings": {
+        "GDPRModule": {
+            "GDPRModulePassword": {
+                "title": "GDPRModule Password",
+                "description": "GDPRModule Password setting"
+            },
+            "GDPRModuleEnabled": {
+                "title": "GDPRModule Enabled",
+                "description": "GDPRModule Enabled setting"
+            }
+        }
+    }
+}
