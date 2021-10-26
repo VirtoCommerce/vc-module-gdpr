@@ -1,0 +1,44 @@
+<div class="blade-static __expanded">
+    <va-breadcrumb ng-model="blade.breadcrumbs" blade-id="blade.id" blade-maximized="blade.isMaximized"></va-breadcrumb>
+    <div class="form-group">
+        <vc-customer-search blade="blade"></vc-customer-search>
+        <p class="form-count">{{'platform.list.count' | translate}}: <span class="count">{{pageSettings.totalItems | number:0}}</span></p>
+    </div>
+</div>
+<div class="blade-static __bottom" ng-if="pageSettings.itemsPerPageCount < pageSettings.totalItems" ng-include="'pagerTemplate.html'"></div>
+<div class="blade-content __medium-wide">
+    <div class="blade-inner">
+        <div class="inner-block" ng-init="setGridOptions('memberlist-grid', {
+                    useExternalSorting: true,
+                    data: 'listEntries',
+                    rowTemplate: 'contact-list.row.html',
+                    rowHeight: 61,
+                    columnDefs: [
+                                { name: 'fullName', displayName: 'gdpr.blades.contact-list.labels.full-name', sort: { direction: uiGridConstants.ASC } },
+                                { name: 'email', displayName: 'gdpr.blades.contact-list.labels.email', sort: { direction: uiGridConstants.ASC } },
+                                { name: 'userName', displayName: 'gdpr.blades.contact-list.labels.login', sort: { direction: uiGridConstants.ASC } }
+                        ]})">
+            <div class="note" ng-if="!listEntries.length">{{ 'platform.list.no-data' | translate }}</div>
+            <div class="table-wrapper" ng-if="listEntries.length">
+                <div ui-grid="gridOptions" ui-grid-auto-resize ui-grid-save-state ui-grid-selection ui-grid-resize-columns ui-grid-move-columns ui-grid-pinning ui-grid-height></div>
+                <ul class="menu __context" role="menu" id="cml_menu">
+                    <li class="menu-item" ng-click='blade.showDetailBlade(contextMenuEntity)'>
+                        <i class="menu-ico fa fa-edit"></i> {{'platform.commands.manage' | translate}}
+                    </li>
+                    <!--<li class="menu-item" ng-click='delete(contextMenuEntity)' va-permission="customer:delete">
+                        <i class="menu-ico fas fa-trash-alt"></i> {{'platform.commands.delete' | translate}}
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="contact-list.row.html">
+    <div ng-click="grid.appScope.selectNode(row.entity)" ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid" ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'" class="ui-grid-cell" ng-class="{'ui-grid-row-header-cell': col.isRowHeader, '__hovered': grid.appScope.contextMenuEntity === row.entity, '__selected': row.entity.id===grid.appScope.selectedNodeId }" role="{{col.isRowHeader ? 'rowheader' : 'gridcell' }}" ui-grid-cell context-menu="grid.appScope.contextMenuEntity = row.entity" data-target="cml_menu"></div>
+</script>
+<script type="text/ng-template" id="list-actions.cell.html">
+    <div class="ui-grid-actions" left-click-menu="grid.appScope.contextMenuEntity = row.entity" data-target="cml_menu">
+        <i class="fa fa-ellipsis-v"></i>
+    </div>
+</script>

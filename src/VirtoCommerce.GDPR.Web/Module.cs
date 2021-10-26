@@ -19,8 +19,8 @@ namespace VirtoCommerce.GDPR.Web
         {
             // database initialization
             var configuration = serviceCollection.BuildServiceProvider().GetRequiredService<IConfiguration>();
-            var connectionString = configuration.GetConnectionString("VirtoCommerce.GDPRModule") ?? configuration.GetConnectionString("VirtoCommerce");
-            serviceCollection.AddDbContext<GDPRModuleDbContext>(options => options.UseSqlServer(connectionString));
+            var connectionString = configuration.GetConnectionString("VirtoCommerce.GDPR") ?? configuration.GetConnectionString("VirtoCommerce");
+            serviceCollection.AddDbContext<GdprDbContext>(options => options.UseSqlServer(connectionString));
         }
 
         public void PostInitialize(IApplicationBuilder appBuilder)
@@ -34,7 +34,7 @@ namespace VirtoCommerce.GDPR.Web
             permissionsProvider.RegisterPermissions(ModuleConstants.Security.Permissions.AllPermissions.Select(x =>
                 new Permission()
                 {
-                    GroupName = "GDPRModule",
+                    GroupName = "GDPR",
                     ModuleId = ModuleInfo.Id,
                     Name = x
                 }).ToArray());
@@ -42,7 +42,7 @@ namespace VirtoCommerce.GDPR.Web
             // Ensure that any pending migrations are applied
             using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
             {
-                using (var dbContext = serviceScope.ServiceProvider.GetRequiredService<GDPRModuleDbContext>())
+                using (var dbContext = serviceScope.ServiceProvider.GetRequiredService<GdprDbContext>())
                 {
                     dbContext.Database.EnsureCreated();
                     dbContext.Database.Migrate();

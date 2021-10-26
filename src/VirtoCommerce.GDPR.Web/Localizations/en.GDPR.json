@@ -1,28 +1,34 @@
 {
-    "GDPRModule": {
-        "blades": {
-            "hello-world": {
-                "title": "Hello world blade"
-            }
+  "gdpr": {
+    "blades": {
+      "main-title": "GDPR",
+      "contact-list": {
+        "title": "Customers",
+        "labels": {
+          "full-name": "Full Name",
+          "email": "Email",
+          "login": "Login"
         }
-    },
-    "permissions": {
-        "GDPRModule:access": "Open GDPRModule menu",
-        "GDPRModule:create": "Create GDPRModule related data",
-        "GDPRModule:read": "View GDPRModule related data",
-        "GDPRModule:update": "Update GDPRModule related data",
-        "GDPRModule:delete": "Delete GDPRModule related data"
-    },
-    "settings": {
-        "GDPRModule": {
-            "GDPRModulePassword": {
-                "title": "GDPRModule Password",
-                "description": "GDPRModule Password setting"
-            },
-            "GDPRModuleEnabled": {
-                "title": "GDPRModule Enabled",
-                "description": "GDPRModule Enabled setting"
-            }
-        }
+      }
     }
+  },
+  "permissions": {
+    "GDPR:access": "Open GDPR menu",
+    "GDPR:create": "Create GDPR related data",
+    "GDPR:read": "View GDPR related data",
+    "GDPR:update": "Update GDPR related data",
+    "GDPR:delete": "Delete GDPR related data"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "GDPR Password",
+        "description": "GDPR Password setting"
+      },
+      "GDPREnabled": {
+        "title": "GDPR Enabled",
+        "description": "GDPR Enabled setting"
+      }
+    }
+  }
 }

@@ -9,11 +9,11 @@ namespace VirtoCommerce.GDPR.Core
         {
             public static class Permissions
             {
-                public const string Access = "GDPRModule:access";
-                public const string Create = "GDPRModule:create";
-                public const string Read = "GDPRModule:read";
-                public const string Update = "GDPRModule:update";
-                public const string Delete = "GDPRModule:delete";
+                public const string Access = "GDPR:access";
+                public const string Create = "GDPR:create";
+                public const string Read = "GDPR:read";
+                public const string Update = "GDPR:update";
+                public const string Delete = "GDPR:delete";
 
                 public static string[] AllPermissions { get; } = { Read, Create, Access, Update, Delete };
             }
@@ -23,18 +23,18 @@ namespace VirtoCommerce.GDPR.Core
         {
             public static class General
             {
-                public static SettingDescriptor GDPRModuleEnabled { get; } = new SettingDescriptor
+                public static SettingDescriptor GDPREnabled { get; } = new SettingDescriptor
                 {
-                    Name = "GDPRModule.GDPRModuleEnabled",
-                    GroupName = "GDPRModule|General",
+                    Name = "GDPR.GDPREnabled",
+                    GroupName = "GDPR|General",
                     ValueType = SettingValueType.Boolean,
                     DefaultValue = false
                 };
 
-                public static SettingDescriptor GDPRModulePassword { get; } = new SettingDescriptor
+                public static SettingDescriptor GDPRPassword { get; } = new SettingDescriptor
                 {
-                    Name = "GDPRModule.GDPRModulePassword",
-                    GroupName = "GDPRModule|Advanced",
+                    Name = "GDPR.GDPRPassword",
+                    GroupName = "GDPR|Advanced",
                     ValueType = SettingValueType.SecureString,
                     DefaultValue = "qwerty"
                 };
@@ -43,8 +43,8 @@ namespace VirtoCommerce.GDPR.Core
                 {
                     get
                     {
-                        yield return GDPRModuleEnabled;
-                        yield return GDPRModulePassword;
+                        yield return GDPREnabled;
+                        yield return GDPRPassword;
                     }
                 }
             }
