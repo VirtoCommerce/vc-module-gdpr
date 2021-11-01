@@ -2,21 +2,33 @@
   "gdpr": {
     "blades": {
       "main-title": "GDPR",
+      "main-subtitle": "Personal data management",
       "contact-list": {
         "title": "Customers",
         "labels": {
           "full-name": "Full Name",
+          "login": "Login",
           "email": "Email",
-          "login": "Login"
+          "birthday": "Birthday"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "Account details",
+        "header": "User information",
+        "commands": {
+          "remove": {
+            "label": "Remove data",
+            "message": {
+              "title": "Remove confirmation",
+              "text": "Are you sure you want to remove Account's personal data? All information will be removed."
+            }
+          }
         }
       }
     }
   },
   "permissions": {
     "GDPR:access": "Open GDPR menu",
-    "GDPR:create": "Create GDPR related data",
-    "GDPR:read": "View GDPR related data",
-    "GDPR:update": "Update GDPR related data",
     "GDPR:delete": "Delete GDPR related data"
   },
   "settings": {

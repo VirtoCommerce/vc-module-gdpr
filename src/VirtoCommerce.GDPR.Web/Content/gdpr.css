@@ -1,0 +1,21 @@
+.contact-detail.__header {
+    background: #fff;
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.contact-detail.__rows-name {
+    font-size: 14px;
+}
+
+.contact-detail.__rows-descr {
+    font-size: 14px;
+    color: #999;
+    display: block;
+    white-space: initial;
+}
+
+.contact-list.__btn-remove {
+    position: relative;
+    right: 45px;
+}

@@ -5,7 +5,6 @@
     <version-tag></version-tag>
     <platformVersion>3.85.0</platformVersion>
     <dependencies>
-<!--        <dependency id="VirtoCommerce.Core" version="3.0.0" /> -->
     </dependencies>
 
     <title>VirtoCommerce GDPR extension module</title>
@@ -20,11 +19,13 @@
 
     <assemblyFile>VirtoCommerce.GDPR.Web.dll</assemblyFile>
     <moduleType>VirtoCommerce.GDPR.Web.Module, VirtoCommerce.GDPR.Web</moduleType>
-
+    <permissions>
+        <group name="VirtoCommerce.GDPR">
+            <permission id="virtoCommerce.gdpr:access" name="Access" />
+            <permission id="virtoCommerce.gdpr:delete" name="Delete" />
+        </group>
+    </permissions>
     <releaseNotes>First version.</releaseNotes>
     <copyright>Copyright © 2021 VirtoCommerce. All rights reserved</copyright>
     <tags>extension module</tags>
-
 </module>
-
-

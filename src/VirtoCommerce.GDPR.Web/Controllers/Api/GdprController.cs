@@ -27,109 +27,35 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         /// <summary>
         /// Get contact list
         /// </summary>
-        [HttpGet]
-        [Route("contacts")]
+        [HttpPost]
+        [Route("contacts/search")]
         [Authorize(ModuleConstants.Security.Permissions.Access)]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
-        public async Task<ActionResult<Contact[]>> GetContactList()
+        public async Task<ActionResult<Contact[]>> GetContactList([FromBody] MembersSearchCriteria criteria)
         {
-            var searchCriteria = new MembersSearchCriteria
-            {
-                MemberType = typeof(Contact).Name,
-                DeepSearch = true,
-                Take = int.MaxValue
-            };
-            if (!(await AuthorizeAsync(searchCriteria, ModuleConstants.Security.Permissions.Access)).Succeeded)
+            criteria.MemberType = typeof(Contact).Name;
+
+            if (!(await AuthorizeAsync(criteria, ModuleConstants.Security.Permissions.Access)).Succeeded)
             {
                 return Unauthorized();
             }
-            var result = await _memberSearchService.SearchMembersAsync(searchCriteria);
+            var result = await _memberSearchService.SearchMembersAsync(criteria);
 
             return Ok(result);
         }
 
         /// <summary>
-        /// Get plenty contacts
+        /// Delete contact by id
         /// </summary>
-        /// <param name="ids">contact IDs</param>
-        [HttpGet]
-        [Route("contacts_by_ids")]
-        [Authorize(ModuleConstants.Security.Permissions.Read)]
-        [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
-        public async Task<ActionResult<Contact[]>> GetContactsByIds([FromQuery] string[] ids)
-        {
-            var result = await _memberService.GetByIdsAsync(ids, null, new[] { typeof(Contact).Name });
-            if (!(await AuthorizeAsync(result, ModuleConstants.Security.Permissions.Read)).Succeeded)
-            {
-                return Unauthorized();
-            }
-            return Ok(result);
-        }
-
-        /// <summary>
-        /// Search contacts
-        /// </summary>
-        /// <remarks>Get array of contacts satisfied search criteria.</remarks>
-        /// <param name="criteria">concrete instance of SearchCriteria type type will be created by using PolymorphicMemberSearchCriteriaJsonConverter</param>
-        //[HttpPost]
-        //[Route("contacts/search")]
-        //[Authorize(ModuleConstants.Security.Permissions.Read)]
-        //[ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
-        //public async Task<ActionResult<ContactSearchResult>> SearchContacts([FromBody] MembersSearchCriteria criteria)
-        //{
-        //    if (criteria == null)
-        //    {
-        //        criteria = AbstractTypeFactory<MembersSearchCriteria>.TryCreateInstance();
-        //    }
-
-        //    criteria.MemberType = typeof(Contact).Name;
-        //    criteria.MemberTypes = new[] { criteria.MemberType };
-
-        //    if (!(await AuthorizeAsync(criteria, ModuleConstants.Security.Permissions.Read)).Succeeded)
-        //    {
-        //        return Unauthorized();
-        //    }
-
-        //    var searchResult = await _memberSearchService.SearchMembersAsync(criteria);
-
-        //    var result = new ContactSearchResult
-        //    {
-        //        TotalCount = searchResult.TotalCount,
-        //        Results = searchResult.Results.OfType<Contact>().ToList()
-        //    };
-
-        //    return Ok(result);
-        //}
-
-        /// <summary>
-        /// Update contact
-        /// </summary>
-        [HttpPut]
-        [Route("contact/update")]
-        [Authorize(ModuleConstants.Security.Permissions.Update)]
-        [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
-        public async Task<ActionResult<Contact>> UpdateContact([FromBody] Contact contact)
-        {
-            if (!(await AuthorizeAsync(contact, ModuleConstants.Security.Permissions.Update)).Succeeded)
-            {
-                return Unauthorized();
-            }
-            await _memberService.SaveChangesAsync(new[] { contact });
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Delete contacts
-        /// </summary>
-        /// <remarks>Delete contacts by given array of ids.</remarks>
-        /// <param name="ids">An array of contacts ids</param>
+        /// <param name="id">contact id</param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("contacts/delete")]
         [Authorize(ModuleConstants.Security.Permissions.Delete)]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> DeleteMembers([FromQuery] string[] ids)
+        public async Task<ActionResult> DeleteMembers([FromQuery] string id)
         {
-            await _memberService.DeleteAsync(ids);
+            await _memberService.DeleteAsync(new[] { id });
             return NoContent();
         }
 

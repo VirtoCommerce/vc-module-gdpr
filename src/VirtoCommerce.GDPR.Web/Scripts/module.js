@@ -1,4 +1,3 @@
-// Call this to register your module to main application
 var moduleName = 'virtoCommerce.gdpr';
 
 if (AppDependencies !== undefined) {
@@ -15,10 +14,10 @@ angular.module(moduleName, [])
                     controller: [
                         '$scope', 'platformWebApp.bladeNavigationService', function ($scope, bladeNavigationService) {
                             var newBlade = {
-                                id: 'contactList',
+                                id: 'gdprMain',
                                 currentEntity: { id: null },
-                                controller: 'virtoCommerce.gdpr.contactListController',
-                                template: 'Modules/$(VirtoCommerce.GDPR)/Scripts/blades/contact-list.tpl.html',
+                                controller: 'virtoCommerce.gdpr.gdprMainController',
+                                template: 'Modules/$(VirtoCommerce.GDPR)/Scripts/blades/gdpr-main.tpl.html',
                                 isClosingDisabled: true
                             };
                             bladeNavigationService.showBlade(newBlade);
@@ -32,7 +31,7 @@ angular.module(moduleName, [])
         function (mainMenuService, widgetService, $state) {
             var menuItem = {
                 path: 'browse/GDPR',
-                icon: 'fa fa-cube',
+                icon: 'fas fa-key',
                 title: 'GDPR',
                 priority: 100,
                 action: function () { $state.go('workspace.gdpr'); },

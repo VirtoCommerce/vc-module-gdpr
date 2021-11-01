@@ -1,10 +1,11 @@
 angular.module('virtoCommerce.gdpr')
-    .controller('virtoCommerce.gdpr.contactListController', ['$scope', 'virtoCommerce.gdpr.webApi', 'platformWebApp.dialogService', 'platformWebApp.bladeUtils', 'platformWebApp.uiGridHelper', 'virtoCommerce.customerModule.memberTypesResolverService', 'platformWebApp.ui-grid.extension',
-        function ($scope, contacts, dialogService, bladeUtils, uiGridHelper, memberTypesResolverService, gridOptionExtension) {
+    .controller('virtoCommerce.gdpr.contactListController', ['$scope', 'virtoCommerce.gdpr.webApi', 'platformWebApp.bladeUtils', 'platformWebApp.uiGridHelper', 'platformWebApp.ui-grid.extension', 'platformWebApp.angularToMomentFormatConverter',
+        function ($scope, contacts, bladeUtils, uiGridHelper, gridOptionExtension, moment) {
             $scope.uiGridConstants = uiGridHelper.uiGridConstants;
 
             var blade = $scope.blade;
             blade.title = 'gdpr.blades.contact-list.title';
+            blade.headIcon = 'fas fa-user-friends';
             var bladeNavigationService = bladeUtils.bladeNavigationService;
 
             blade.refresh = function (parentRefresh) {
@@ -21,14 +22,21 @@ angular.module('virtoCommerce.gdpr')
                         $scope.pageSettings.totalItems = data.totalCount;
 
                         if (Array.isArray(data.results) && data.results.length) {
-                            _.each(data.results, function (x) {
-                                if (x.securityAccounts[0]) {
-                                    x.email = x.securityAccounts[0].email ? x.securityAccounts[0].email : '';
-                                    x.userName = x.securityAccounts[0].userName ? x.securityAccounts[0].userName : '';
+                            _.each(data.results, function (contact) {
+                                if (contact.securityAccounts[0]) {
+                                    contact.email = contact.securityAccounts[0].email ?? '';
+                                    contact.login = contact.securityAccounts[0].userName ?? '';
                                 }
                                 else {
-                                    x.email = '';
-                                    x.userName = '';
+                                    contact.email = '';
+                                    contact.login = '';
+                                }
+                                if (contact.birthDate) {
+                                    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                                    const d = new Date(contact.birthDate);
+                                    contact.birthday = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+                                } else {
+                                    contact.birthday = '';
                                 }
                             });
                             if (!data.results[0].outerId) {
@@ -37,8 +45,6 @@ angular.module('virtoCommerce.gdpr')
                         }
 
                         $scope.listEntries = data.results ? data.results : [];
-
-                        setBreadcrumbs();
                     });
 
                 if (parentRefresh && blade.parentRefresh) {
@@ -46,117 +52,20 @@ angular.module('virtoCommerce.gdpr')
                 }
             };
 
-            //Breadcrumbs
-            function setBreadcrumbs() {
-                if (blade.breadcrumbs) {
-                    //Clone array (angular.copy leaves the same reference)
-                    var breadcrumbs = blade.breadcrumbs.slice(0);
+            $scope.selectNode = function (data) {
+                $scope.selectedNodeId = data.id;
 
-                    //prevent duplicate items
-                    if (_.all(breadcrumbs, function (x) { return x.id !== blade.currentEntity.id; })) {
-                        var breadCrumb = generateBreadcrumb(blade.currentEntity.id, blade.currentEntity.name);
-                        breadcrumbs.push(breadCrumb);
-                    }
-                    blade.breadcrumbs = breadcrumbs;
-                } else {
-                    blade.breadcrumbs = [generateBreadcrumb(null, 'gdpr.blades.contact-list.breadcrumb-all')];
-                }
-            }
-
-            function generateBreadcrumb(id, name) {
-                return {
-                    id: id,
-                    name: name,
-                    blade: blade,
-                    navigate: function (breadcrumb) {
-                        breadcrumb.blade.disableOpenAnimation = true;
-                        bladeNavigationService.showBlade(breadcrumb.blade);
-                        breadcrumb.blade.refresh();
-                    }
+                var newBlade = {
+                    id: 'contactDetail',
+                    currentEntityId: data.id,
+                    currentEntity: data,
+                    title: data.fullName,
+                    subtitle: 'gdpr.blades.contact-detail.subtitle',
+                    controller: 'virtoCommerce.gdpr.contactDetailController',
+                    template: 'modules/$(VirtoCommerce.GDPR)/scripts/blades/contact-detail.tpl.html'
                 };
-            }
-
-            blade.showDetailBlade = function (listItem, isNew) {
-                blade.setSelectedNode(listItem);
-
-                var foundTemplate = memberTypesResolverService.resolve(listItem.memberType);
-                if (foundTemplate) {
-                    var newBlade = angular.copy(foundTemplate.detailBlade);
-                    newBlade.currentEntity = listItem;
-                    newBlade.currentEntityId = listItem.id;
-                    newBlade.isNew = isNew;
-                    bladeNavigationService.showBlade(newBlade, blade);
-                } else {
-                    dialogService.showNotificationDialog({
-                        id: "error",
-                        title: "customer.dialogs.unknown-member-type.title",
-                        message: "customer.dialogs.unknown-member-type.message",
-                        messageValues: { memberType: listItem.memberType },
-                    });
-                }
+                bladeNavigationService.showBlade(newBlade, blade);
             };
-
-            /*$scope.delete = function (data) {
-                deleteList([data]);
-            };
-
-            function deleteList(selection) {
-                var dialog = {
-                    id: "confirmDeleteItem",
-                    title: "customer.dialogs.members-delete.title",
-                    message: "customer.dialogs.members-delete.message",
-                    callback: function (remove) {
-                        if (remove) {
-                            bladeNavigationService.closeChildrenBlades(blade, function () {
-                                blade.isLoading = true;
-                                var memberIds = _.pluck(selection, 'id');
-
-                                if (($scope.gridApi != undefined) && $scope.gridApi.selection.getSelectAllState()) {
-                                    var searchCriteria = getSearchCriteria();
-                                    contacts.delete(searchCriteria, function () {
-                                        $scope.gridApi.selection.clearSelectedRows();
-                                        blade.refresh(true);
-                                    }
-                                    );
-                                }
-                                else if (_.any(memberIds)) {
-                                    contacts.remove({ ids: memberIds },
-                                        function () { blade.refresh(true); });
-                                }
-                            });
-                        }
-                    }
-                };
-                dialogService.showConfirmationDialog(dialog);
-            }*/
-
-            blade.setSelectedNode = function (listItem) {
-                $scope.selectedNodeId = listItem.id;
-            };
-
-            $scope.selectNode = function (listItem) {
-                blade.setSelectedNode(listItem);
-
-                var foundTemplate = memberTypesResolverService.resolve(listItem.memberType);
-                if (foundTemplate && foundTemplate.knownChildrenTypes && foundTemplate.knownChildrenTypes.length) {
-                    var newBlade = {
-                        id: blade.id,
-                        breadcrumbs: blade.breadcrumbs,
-                        subtitle: 'customer.blades.member-list.subtitle',
-                        subtitleValues: { name: listItem.name },
-                        currentEntity: listItem,
-                        disableOpenAnimation: true,
-                        controller: blade.controller,
-                        template: blade.template,
-                        isClosingDisabled: true
-                    };
-                    bladeNavigationService.showBlade(newBlade, blade.parentBlade);
-                } else {
-                    blade.showDetailBlade(listItem);
-                }
-            };
-
-            blade.headIcon = 'fa fa-user __customers';
 
             blade.toolbarCommands = [
                 {
@@ -165,33 +74,7 @@ angular.module('virtoCommerce.gdpr')
                     canExecuteMethod: function () {
                         return true;
                     }
-                }/*,
-                {
-                    name: "platform.commands.add", icon: 'fas fa-plus',
-                    executeMethod: function () {
-                        var newBlade = {
-                            id: 'listItemChild',
-                            currentEntity: blade.currentEntity,
-                            title: 'customer.blades.member-add.title',
-                            subtitle: 'customer.blades.member-add.subtitle',
-                            controller: 'virtoCommerce.customerModule.memberAddController',
-                            template: 'Modules/$(VirtoCommerce.Customer)/Scripts/blades/member-add.tpl.html'
-                        };
-                        bladeNavigationService.showBlade(newBlade, blade);
-                    },
-                    canExecuteMethod: function () {
-                        return true;
-                    },
-                    permission: 'customer:create'
-                },
-                {
-                    name: "platform.commands.delete", icon: 'fas fa-trash-alt',
-                    executeMethod: function () { deleteList($scope.gridApi.selection.getSelectedRows()); },
-                    canExecuteMethod: function () {
-                        return $scope.gridApi && _.any($scope.gridApi.selection.getSelectedRows());
-                    },
-                    permission: 'customer:delete'
-                }*/
+                }
             ];
 
             // simple and advanced filtering
@@ -223,20 +106,23 @@ angular.module('virtoCommerce.gdpr')
                 bladeUtils.initializePagination($scope);
             };
 
+            $scope.clearKeyword = function () {
+                blade.searchKeyword = null;
+                blade.refresh();
+            };
+
             function getSearchCriteria() {
                 var searchCriteria = {
                     memberType: blade.memberType,
                     memberId: blade.currentEntity.id,
-                    keyword: filter.keyword ? filter.keyword : undefined,
-                    deepSearch: filter.keyword ? true : false,
+                    keyword: blade.searchKeyword,
+                    deepSearch: blade.searchKeyword ? true : false,
                     sort: uiGridHelper.getSortExpression($scope),
                     skip: ($scope.pageSettings.currentPage - 1) * $scope.pageSettings.itemsPerPageCount,
                     take: $scope.pageSettings.itemsPerPageCount,
                     objectType: 'Member'
                 };
+
                 return searchCriteria;
             }
-
-            //No need to call this because page 'pageSettings.currentPage' is watched!!! It would trigger subsequent duplicated req...
-            //blade.refresh();
         }]);
