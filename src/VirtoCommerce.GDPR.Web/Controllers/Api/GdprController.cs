@@ -33,13 +33,12 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
         public async Task<ActionResult<Contact[]>> GetContactList([FromBody] MembersSearchCriteria criteria)
         {
-            criteria.MemberType = typeof(Contact).Name;
-
             if (!(await AuthorizeAsync(criteria, ModuleConstants.Security.Permissions.Access)).Succeeded)
             {
                 return Unauthorized();
             }
 
+            criteria.MemberType = typeof(Contact).Name;
             var result = await _memberSearchService.SearchMembersAsync(criteria);
 
             return Ok(result);
