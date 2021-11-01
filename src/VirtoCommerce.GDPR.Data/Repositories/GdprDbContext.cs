@@ -17,9 +17,6 @@ namespace VirtoCommerce.GDPR.Data.Repositories
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //        modelBuilder.Entity<GDPREntity>().ToTable("MyModule").HasKey(x => x.Id);
-            //        modelBuilder.Entity<GDPREntity>().Property(x => x.Id).HasMaxLength(128);
-            //        base.OnModelCreating(modelBuilder);
         }
     }
 }

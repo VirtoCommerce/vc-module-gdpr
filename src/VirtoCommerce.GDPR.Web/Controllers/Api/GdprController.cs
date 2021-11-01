@@ -39,6 +39,7 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
             {
                 return Unauthorized();
             }
+
             var result = await _memberSearchService.SearchMembersAsync(criteria);
 
             return Ok(result);

@@ -28,7 +28,7 @@ namespace VirtoCommerce.GDPR.Core
                     Name = "GDPR.GDPREnabled",
                     GroupName = "GDPR|General",
                     ValueType = SettingValueType.Boolean,
-                    DefaultValue = false
+                    DefaultValue = true
                 };
 
                 public static SettingDescriptor GDPRPassword { get; } = new SettingDescriptor
