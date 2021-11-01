@@ -18,7 +18,6 @@
     <Folder Include="ExportImport\" />
     <Folder Include="Handlers\" />
     <Folder Include="Models\" />
-    <Folder Include="Repositories\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
@@ -27,7 +26,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.84.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Data" Version="3.85.0" />
   </ItemGroup>
 
 </Project>
