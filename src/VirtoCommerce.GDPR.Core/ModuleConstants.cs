@@ -23,14 +23,6 @@ namespace VirtoCommerce.GDPR.Core
         {
             public static class General
             {
-                public static SettingDescriptor GDPREnabled { get; } = new SettingDescriptor
-                {
-                    Name = "GDPR.GDPREnabled",
-                    GroupName = "GDPR|General",
-                    ValueType = SettingValueType.Boolean,
-                    DefaultValue = true
-                };
-
                 public static SettingDescriptor GDPRPassword { get; } = new SettingDescriptor
                 {
                     Name = "GDPR.GDPRPassword",
@@ -43,7 +35,6 @@ namespace VirtoCommerce.GDPR.Core
                 {
                     get
                     {
-                        yield return GDPREnabled;
                         yield return GDPRPassword;
                     }
                 }
