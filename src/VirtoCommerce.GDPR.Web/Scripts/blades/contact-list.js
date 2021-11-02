@@ -62,7 +62,7 @@ angular.module('virtoCommerce.gdpr')
                     title: data.fullName,
                     subtitle: 'gdpr.blades.contact-detail.subtitle',
                     controller: 'virtoCommerce.gdpr.contactDetailController',
-                    template: 'modules/$(VirtoCommerce.GDPR)/scripts/blades/contact-detail.tpl.html'
+                    template: 'modules/$(VirtoCommerce.GDPR)/Scripts/blades/contact-detail.tpl.html'
                 };
                 bladeNavigationService.showBlade(newBlade, blade);
             };
