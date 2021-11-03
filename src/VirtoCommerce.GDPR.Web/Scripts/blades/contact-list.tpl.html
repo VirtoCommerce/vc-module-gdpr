@@ -22,9 +22,9 @@
                     rowTemplate: 'contact-list.row.html',
                     rowHeight: 61,
                     columnDefs: [
-                                { name: 'fullName', displayName: 'gdpr.blades.contact-list.labels.full-name', sort: { direction: uiGridConstants.ASC } },
-                                { name: 'email', displayName: 'gdpr.blades.contact-list.labels.email', sort: { direction: uiGridConstants.ASC } },
-                                { name: 'login', displayName: 'gdpr.blades.contact-list.labels.login', sort: { direction: uiGridConstants.ASC } }
+                                { name: 'fullName', displayName: 'gdpr.blades.contact-list.labels.full-name', enableSorting: false },
+                                { name: 'email', displayName: 'gdpr.blades.contact-list.labels.email', enableSorting: false },
+                                { name: 'login', displayName: 'gdpr.blades.contact-list.labels.login', enableSorting: false }
                         ]})">
             <div class="note" ng-if="!listEntries.length">{{ 'platform.list.no-data' | translate }}</div>
             <div class="table-wrapper" ng-if="listEntries.length">

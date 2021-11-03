@@ -77,20 +77,6 @@ angular.module('virtoCommerce.gdpr')
                 }
             ];
 
-            // simple and advanced filtering
-            var filter = blade.filter = { keyword: null };
-
-            filter.criteriaChanged = function () {
-                if (filter.keyword === null) {
-                    blade.memberType = undefined;
-                }
-                if ($scope.pageSettings.currentPage > 1) {
-                    $scope.pageSettings.currentPage = 1;
-                } else {
-                    blade.refresh();
-                }
-            };
-
             // ui-grid
             $scope.setGridOptions = function (gridId, gridOptions) {
                 $scope.gridOptions = gridOptions;
@@ -112,8 +98,8 @@ angular.module('virtoCommerce.gdpr')
             };
 
             function getSearchCriteria() {
-                var searchCriteria = {
-                    memberType: blade.memberType,
+                return {
+                    memberType: 'Contact',
                     memberId: blade.currentEntity.id,
                     keyword: blade.searchKeyword,
                     deepSearch: blade.searchKeyword ? true : false,
@@ -122,7 +108,5 @@ angular.module('virtoCommerce.gdpr')
                     take: $scope.pageSettings.itemsPerPageCount,
                     objectType: 'Member'
                 };
-
-                return searchCriteria;
             }
         }]);

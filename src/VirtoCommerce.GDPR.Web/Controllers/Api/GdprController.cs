@@ -38,7 +38,6 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
                 return Unauthorized();
             }
 
-            criteria.MemberType = typeof(Contact).Name;
             var result = await _memberSearchService.SearchMembersAsync(criteria);
 
             return Ok(result);
