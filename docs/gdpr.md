@@ -6,7 +6,7 @@ The GDPR module supplied by Virto is a tool allowing you to supply the customer 
 
 ## What Is GDPR?
 
-The General Data Protection Regulation, or GDPR, is a regulation in the EU law that, basically, provides a right to a private individual residing in the EU to request their personal details stored with a third party at any time and,if applicable, to have them deleted from any third party website. To learn more on GDPR, please go [here](https://gdpr-info.eu/).
+The General Data Protection Regulation, or GDPR, is a regulation in the EU law that, basically, provides a right to a private individual residing in the EU to request their personal details stored with a third party at any time and, if applicable, to have them deleted from any third party website. To learn more on GDPR, please go [here](https://gdpr-info.eu/).
 
 ## What Does It Mean for You?
 
