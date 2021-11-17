@@ -19,10 +19,4 @@
     <ProjectReference Include="..\VirtoCommerce.GDPR.Core\VirtoCommerce.GDPR.Core.csproj" />
     <ProjectReference Include="..\VirtoCommerce.GDPR.Data\VirtoCommerce.GDPR.Data.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Update="module.manifest">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
