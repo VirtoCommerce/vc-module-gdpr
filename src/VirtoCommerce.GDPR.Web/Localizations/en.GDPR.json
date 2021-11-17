@@ -22,6 +22,9 @@
               "title": "Remove confirmation",
               "text": "Are you sure you want to remove Account's personal data? All information will be removed."
             }
+          },
+          "download": {
+            "label": "Download data"
           }
         }
       }

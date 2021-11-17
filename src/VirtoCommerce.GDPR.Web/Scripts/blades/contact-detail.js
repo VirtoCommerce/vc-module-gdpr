@@ -10,7 +10,7 @@ angular.module('virtoCommerce.gdpr')
                 blade.isLoading = false;
             }
 
-            function deleteBlade() {
+            function deleteContact() {
                 var dialog = {
                     id: 'confirmDelete',
                     title: 'gdpr.blades.contact-detail.commands.remove.message.title',
@@ -26,16 +26,27 @@ angular.module('virtoCommerce.gdpr')
                     }
                 }
                 dialogService.showConfirmationDialog(dialog);
-            };
+            }
+
+            function downloadContactData() {
+                return true;
+            }
 
             blade.toolbarCommands = [
                 {
                     name: 'gdpr.blades.contact-detail.commands.remove.label', icon: 'fas fa-eraser',
-                    executeMethod: deleteBlade,
+                    executeMethod: deleteContact,
                     canExecuteMethod: function () {
                         return true;
                     },
                     permission: 'virtoCommerce.gdpr:delete'
+                },
+                {
+                    name: 'gdpr.blades.contact-detail.commands.download.label', icon: 'fas fa-download',
+                    executeMethod: downloadContactData,
+                    canExecuteMethod: function () {
+                        return true;
+                    }//,                    permission: 'virtoCommerce.gdpr:download'
                 }
             ];
 

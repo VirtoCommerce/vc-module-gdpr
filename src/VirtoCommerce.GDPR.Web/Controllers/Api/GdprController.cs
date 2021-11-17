@@ -52,9 +52,23 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         [Route("contacts/delete")]
         [Authorize(ModuleConstants.Security.Permissions.Delete)]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> DeleteMembers([FromQuery] string id)
+        public async Task<ActionResult> DeleteContact([FromQuery] string id)
         {
             await _memberService.DeleteAsync(new[] { id });
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Download contact info (JSON format)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("contacts/download")]
+        [Authorize(ModuleConstants.Security.Permissions.Read)]
+        [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> DownloadContactInfo([FromQuery] string id)
+        {
             return NoContent();
         }
 
