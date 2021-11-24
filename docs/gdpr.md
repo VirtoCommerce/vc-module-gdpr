@@ -14,7 +14,7 @@ As an ecommerce store owner, you have to store your customers' details, such as 
 
 ## How Does the GDPR Module Help?
 
-With the GDPR module, you can delete your customer details right upon their request, within a single click of a button.
+With the GDPR module, you can provide your customer with their details stored on your website right upon their request by downloading those details within a single click of a button; or, you can also remove your customer's details, if they request so.
 
 ### Opening GDPR
 
@@ -35,10 +35,73 @@ This page will have the details of all your customers. By default, you will see 
 ![Customizing the Details](./media/03-gdpr-customizing-customer-details-view.png)
 <p align=center>Figure 3: Customizing the Customer Details View</p>
 
-Once you open this page, you can select any customer in the list to view their details and, if requested or deemed appropriate, delete their personal information. To delete the details, hit the *Remove Data* button:
+Once you open this page, you can select any customer in the list to view their details and, if requested or deemed appropriate, either delete their personal information or download it to further send it to the customer.
 
-![Removing Customer Details](./media/04-gdpr-removing-data.png)
+To delete the details, hit the *Remove Data* button:
+
+![Removing Customer Details](./media/04-gdpr-removing-data_01.png)
 <p align=center>Figure 4: Removing Customer Details</p>
 
+To download the details, use the *Download data* button:
 
+![Removing Customer Details](./media/05-gdpr-downloading-data.png)
+<p align=center>Figure 5: Downloading Customer Details</p>
 
+Once downloaded, you will get a JSON file housing all personal details of the appropriate customer:
+
+<details><summary>Downloaded Customer Details in JSON Format</summary>
+
+```
+{
+	"firstName": "Alex",
+	"lastName": "Starberg",
+	"fullName": "Alex Starberg",
+	"birthday": "1982-02-09T21:00:00Z",
+	"emailAddresses": [],
+	"phones": [],
+	"addresses": [],
+	"accounts": [
+		{
+			"login": "Login",
+			"emailAddress": "123@test.com"
+		},
+		{
+			"login": "bomba89@example.com",
+			"emailAddress": "bomba89@example.com"
+		}
+	],
+	"orders": [
+		{
+			"addresses": [
+				{
+					"firstName": "Alex",
+					"lastName": "Starberg",
+					"country": "United States",
+					"region": "Tennessee",
+					"city": "Chattanooga",
+					"line1": "475 Uptain Rd.",
+					"email": "bomba89@example.com",
+					"phone": "(423) 978-0927"
+				}
+			]
+		},
+		{
+			"addresses": [
+				{
+					"firstName": "Alex",
+					"lastName": "Starberg",
+					"country": "United States",
+					"region": "Tennessee",
+					"city": "Chattanooga",
+					"line1": "475 Uptain Rd.",
+					"email": "bomba89@example.com",
+					"phone": "(423) 978-0927"
+				}
+			]
+		}
+	]
+}
+```
+</details>
+
+For better readability, you can then convert the JSON output into text or CSV before sending the details to your customer.
