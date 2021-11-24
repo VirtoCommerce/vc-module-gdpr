@@ -9,13 +9,11 @@ namespace VirtoCommerce.GDPR.Core
         {
             public static class Permissions
             {
-                public const string Access = "GDPR:access";
-                public const string Create = "GDPR:create";
-                public const string Read = "GDPR:read";
-                public const string Update = "GDPR:update";
-                public const string Delete = "GDPR:delete";
+                public const string Access = "gdpr:access";
+                public const string Delete = "gdpr:delete";
+                public const string Download = "gdpr:download";
 
-                public static string[] AllPermissions { get; } = { Read, Create, Access, Update, Delete };
+                public static string[] AllPermissions { get; } = { Access, Delete, Download };
             }
         }
 

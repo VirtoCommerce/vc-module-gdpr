@@ -31,8 +31,9 @@
     }
   },
   "permissions": {
-    "GDPR:access": "Open GDPR menu",
-    "GDPR:delete": "Delete GDPR related data"
+    "gdpr:access": "Open GDPR menu",
+    "gdpr:delete": "Delete GDPR related data",
+    "gdpr:download": "Download GDPR related data"
   },
   "settings": {
     "GDPR": {

@@ -6,6 +6,7 @@ using VirtoCommerce.CustomerModule.Core.Model;
 using VirtoCommerce.CustomerModule.Core.Model.Search;
 using VirtoCommerce.CustomerModule.Core.Services;
 using VirtoCommerce.GDPR.Core;
+using VirtoCommerce.GDPR.Core.Services;
 using VirtoCommerce.Platform.Security.Authorization;
 
 namespace VirtoCommerce.GDPR.Web.Controllers.Api
@@ -16,12 +17,14 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         private readonly IAuthorizationService _authorizationService;
         private readonly IMemberService _memberService;
         private readonly IMemberSearchService _memberSearchService;
+        private readonly IDownloadContactDataService _downloadContactDataService;
 
-        public GdprController(IAuthorizationService authorizationService, IMemberService memberService, IMemberSearchService memberSearchService)
+        public GdprController(IAuthorizationService authorizationService, IMemberService memberService, IMemberSearchService memberSearchService, IDownloadContactDataService downloadContactDataService)
         {
             _authorizationService = authorizationService;
             _memberService = memberService;
             _memberSearchService = memberSearchService;
+            _downloadContactDataService = downloadContactDataService;
         }
 
         /// <summary>
@@ -59,17 +62,18 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         }
 
         /// <summary>
-        /// Download contact info (JSON format)
+        /// Download contact info by id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">contact id</param>
         /// <returns></returns>
         [HttpGet]
         [Route("contacts/download")]
-        [Authorize(ModuleConstants.Security.Permissions.Read)]
+        [Authorize(ModuleConstants.Security.Permissions.Download)]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
         public async Task<ActionResult> DownloadContactInfo([FromQuery] string id)
         {
-            return NoContent();
+            var result = await _downloadContactDataService.GetContactData(id);
+            return Ok(result);
         }
 
         private Task<AuthorizationResult> AuthorizeAsync(object resource, string permission)

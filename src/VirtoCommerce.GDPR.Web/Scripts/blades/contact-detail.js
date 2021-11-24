@@ -29,7 +29,17 @@ angular.module('virtoCommerce.gdpr')
             }
 
             function downloadContactData() {
-                return true;
+                gdprApi.download({ id: blade.currentEntityId }, function (data) {
+                    data.jsonTextInfo = JSON.stringify(data, null, "\t");
+                    var a = document.createElement("a");
+                    var file = new Blob([data.jsonTextInfo], { type: 'application/json' });
+                    a.href = URL.createObjectURL(file);
+                    var d = new Date();
+                    var date = d.getFullYear() + '.' + d.getMonth() + '.' + d.getDate() + '_' + d.getHours() + '.' + d.getMinutes() + '.' + d.getSeconds();
+                    var fileName = data.fullName + '_' + date + '.json';
+                    a.download = fileName.replace(/\s+/g, '');
+                    a.click();
+                });
             }
 
             blade.toolbarCommands = [
@@ -39,14 +49,15 @@ angular.module('virtoCommerce.gdpr')
                     canExecuteMethod: function () {
                         return true;
                     },
-                    permission: 'virtoCommerce.gdpr:delete'
+                    permission: 'gdpr:delete'
                 },
                 {
                     name: 'gdpr.blades.contact-detail.commands.download.label', icon: 'fas fa-download',
                     executeMethod: downloadContactData,
                     canExecuteMethod: function () {
                         return true;
-                    }//,                    permission: 'virtoCommerce.gdpr:download'
+                    },
+                    permission: 'gdpr:download'
                 }
             ];
 
