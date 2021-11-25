@@ -34,7 +34,6 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         [HttpPost]
         [Route("contacts/search")]
         [Authorize(ModuleConstants.Security.Permissions.Access)]
-        [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
         public async Task<ActionResult<Contact[]>> GetContactList([FromBody] MembersSearchCriteria criteria)
         {
             if (!(await AuthorizeAsync(criteria, ModuleConstants.Security.Permissions.Access)).Succeeded)
@@ -70,7 +69,6 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         [HttpGet]
         [Route("contacts/download")]
         [Authorize(ModuleConstants.Security.Permissions.Download)]
-        [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
         public async Task<ActionResult<Customer>> DownloadContactInfo([FromQuery] string id)
         {
             var result = await _downloadContactDataService.GetContactDataAsync(id);
