@@ -5,6 +5,6 @@ namespace VirtoCommerce.GDPR.Core.Services
 {
     public interface IDownloadContactDataService
     {
-        Task<Customer> GetContactData(string id);
+        Task<Customer> GetContactDataAsync(string id);
     }
 }

@@ -7,8 +7,6 @@ using VirtoCommerce.GDPR.Core;
 using VirtoCommerce.GDPR.Core.Services;
 using VirtoCommerce.GDPR.Data.Repositories;
 using VirtoCommerce.GDPR.Data.Services;
-using VirtoCommerce.OrdersModule.Core.Services;
-using VirtoCommerce.OrdersModule.Data.Services;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Core.Settings;
@@ -26,7 +24,6 @@ namespace VirtoCommerce.GDPR.Web
             var connectionString = configuration.GetConnectionString("VirtoCommerce.GDPR") ?? configuration.GetConnectionString("VirtoCommerce");
             serviceCollection.AddDbContext<GdprDbContext>(options => options.UseSqlServer(connectionString));
             serviceCollection.AddTransient<IDownloadContactDataService, DownloadContactDataService>();
-            serviceCollection.AddTransient<ICustomerOrderSearchService, CustomerOrderSearchService>();
         }
 
         public void PostInitialize(IApplicationBuilder appBuilder)

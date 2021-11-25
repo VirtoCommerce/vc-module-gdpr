@@ -1,5 +1,8 @@
 namespace VirtoCommerce.GDPR.Core.Models.DownloadData
 {
+    /// <summary>
+    /// Customer, order address download data
+    /// </summary>
     public class Address
     {
         public string FirstName { get; set; }

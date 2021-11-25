@@ -72,7 +72,7 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
         public async Task<ActionResult> DownloadContactInfo([FromQuery] string id)
         {
-            var result = await _downloadContactDataService.GetContactData(id);
+            var result = await _downloadContactDataService.GetContactDataAsync(id);
             return Ok(result);
         }
 

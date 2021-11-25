@@ -6,7 +6,6 @@ using VirtoCommerce.GDPR.Core.Models.DownloadData;
 using VirtoCommerce.GDPR.Core.Services;
 using VirtoCommerce.OrdersModule.Core.Model;
 using VirtoCommerce.OrdersModule.Core.Model.Search;
-using VirtoCommerce.OrdersModule.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.GenericCrud;
 
@@ -17,10 +16,15 @@ namespace VirtoCommerce.GDPR.Data.Services
         private readonly IMemberService _memberService;
         private readonly ISearchService<CustomerOrderSearchCriteria, CustomerOrderSearchResult, CustomerOrder> _customerOrderSearchService;
 
-        public DownloadContactDataService(IMemberService memberService, ICustomerOrderSearchService customerOrderSearchService)
+        /// <summary>
+        /// Max count of customer order donload data
+        /// </summary>
+        protected virtual int DefaultTake => 9999;
+
+        public DownloadContactDataService(IMemberService memberService, ISearchService<CustomerOrderSearchCriteria, CustomerOrderSearchResult, CustomerOrder> customerOrderSearchService)
         {
             _memberService = memberService;
-            _customerOrderSearchService = (ISearchService<CustomerOrderSearchCriteria, CustomerOrderSearchResult, CustomerOrder>)customerOrderSearchService;
+            _customerOrderSearchService = customerOrderSearchService;
         }
 
         /// <summary>
@@ -28,16 +32,16 @@ namespace VirtoCommerce.GDPR.Data.Services
         /// </summary>
         /// <param name="id">contact Id</param>
         /// <returns></returns>
-        public async Task<Customer> GetContactData(string id)
+        public async Task<Customer> GetContactDataAsync(string id)
         {
-            Contact contact = (Contact)await _memberService.GetByIdAsync(id);
+            var contact = (Contact)await _memberService.GetByIdAsync(id);
 
             var orderSearchCriteria = AbstractTypeFactory<CustomerOrderSearchCriteria>.TryCreateInstance();
             orderSearchCriteria.CustomerId = contact.Id;
-            orderSearchCriteria.Take = 25;
+            orderSearchCriteria.Take = DefaultTake;
             var customerOrders = await _customerOrderSearchService.SearchAsync(orderSearchCriteria);
 
-            Customer result = new Customer()
+            var result = new Customer
             {
                 FirstName = contact.FirstName,
                 LastName = contact.LastName,
