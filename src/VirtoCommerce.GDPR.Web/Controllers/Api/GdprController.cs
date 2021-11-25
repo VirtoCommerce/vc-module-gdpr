@@ -6,6 +6,7 @@ using VirtoCommerce.CustomerModule.Core.Model;
 using VirtoCommerce.CustomerModule.Core.Model.Search;
 using VirtoCommerce.CustomerModule.Core.Services;
 using VirtoCommerce.GDPR.Core;
+using VirtoCommerce.GDPR.Core.Models.DownloadData;
 using VirtoCommerce.GDPR.Core.Services;
 using VirtoCommerce.Platform.Security.Authorization;
 
@@ -70,7 +71,7 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         [Route("contacts/download")]
         [Authorize(ModuleConstants.Security.Permissions.Download)]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> DownloadContactInfo([FromQuery] string id)
+        public async Task<ActionResult<Customer>> DownloadContactInfo([FromQuery] string id)
         {
             var result = await _downloadContactDataService.GetContactDataAsync(id);
             return Ok(result);
