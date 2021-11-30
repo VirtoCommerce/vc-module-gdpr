@@ -37,8 +37,11 @@ namespace VirtoCommerce.GDPR.Data.Services
             var contact = (Contact)await _memberService.GetByIdAsync(id);
 
             var orderSearchCriteria = AbstractTypeFactory<CustomerOrderSearchCriteria>.TryCreateInstance();
-            orderSearchCriteria.CustomerId = contact.Id;
+            // in old version: CustomerOrder.CustomerId = Member.Id, but in new version: CustomerOrder.CustomerId = AspNetUsers.Id, so we return both variants in here
+            var accountIds = contact.SecurityAccounts.Select(x => x.Id).Concat(new string[] { contact.Id });
+            orderSearchCriteria.CustomerIds = accountIds.ToArray();
             orderSearchCriteria.Take = DefaultTake;
+
             var customerOrders = await _customerOrderSearchService.SearchAsync(orderSearchCriteria);
 
             var result = new Customer
