@@ -35,7 +35,7 @@ angular.module(moduleName, [])
                 title: 'GDPR',
                 priority: 100,
                 action: function () { $state.go('workspace.gdpr'); },
-                permission: 'GDPR:access'
+                permission: 'gdpr:access'
             };
             mainMenuService.addMenuItem(menuItem);
         }
