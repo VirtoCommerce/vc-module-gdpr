@@ -61,7 +61,7 @@ namespace VirtoCommerce.GDPR.Data.Services
                     City = add.City,
                     Line1 = add.Line1,
                     Line2 = add.Line2,
-                    ZipCode = add.Zip,
+                    ZipCode = add.PostalCode,
                     Email = add.Email,
                     Phone = add.Phone
                 }).ToList(),
@@ -83,7 +83,7 @@ namespace VirtoCommerce.GDPR.Data.Services
                             City = a.City,
                             Line1 = a.Line1,
                             Line2 = a.Line2,
-                            ZipCode = a.Zip,
+                            ZipCode = a.PostalCode,
                             Email = a.Email,
                             Phone = a.Phone
                         }).ToList()
