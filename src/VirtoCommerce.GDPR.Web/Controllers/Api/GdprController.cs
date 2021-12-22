@@ -20,7 +20,10 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         private readonly IAnonymizeContactDataService _anonymizeContactDataService;
         private readonly IDownloadContactDataService _downloadContactDataService;
 
-        public GdprController(IAuthorizationService authorizationService, IMemberSearchService memberSearchService, IAnonymizeContactDataService anonymizeContactDataService, IDownloadContactDataService downloadContactDataService)
+        public GdprController(IAuthorizationService authorizationService,
+            IMemberSearchService memberSearchService,
+            IAnonymizeContactDataService anonymizeContactDataService,
+            IDownloadContactDataService downloadContactDataService)
         {
             _authorizationService = authorizationService;
             _memberSearchService = memberSearchService;

@@ -25,7 +25,10 @@ namespace VirtoCommerce.GDPR.Data.Services
         private readonly string _anonymPostalCode = "000000";
         private readonly string _anonymPhone = "+00000000000";
 
-        public AnonymizeContactDataService(IMemberService memberService, ISearchService<CustomerOrderSearchCriteria, CustomerOrderSearchResult, CustomerOrder> customerOrderSearchService, ICustomerOrderService customerOrderService, Func<UserManager<ApplicationUser>> userManager)
+        public AnonymizeContactDataService(IMemberService memberService,
+            ISearchService<CustomerOrderSearchCriteria, CustomerOrderSearchResult, CustomerOrder> customerOrderSearchService,
+            ICustomerOrderService customerOrderService,
+            Func<UserManager<ApplicationUser>> userManager)
         {
             _memberService = memberService;
             _customerOrderSearchService = customerOrderSearchService;
@@ -84,14 +87,14 @@ namespace VirtoCommerce.GDPR.Data.Services
                 }
             }
 
-            await _memberService.SaveChangesAsync(new[] { contact });
+            var userSavingTasks = new List<Task>();
+            var saveContactTask = _memberService.SaveChangesAsync(new[] { contact });
+            var saveCustomerOrdersTask = _customerOrderService.SaveChangesAsync(customerOrdersSearchResult.Results.ToArray());
 
-            await _customerOrderService.SaveChangesAsync(customerOrdersSearchResult.Results.ToArray());
-
-            foreach (var user in contact.SecurityAccounts)
-            {
-                await SaveUserChangesAsync(user);
-            }
+            userSavingTasks.Add(saveContactTask);
+            userSavingTasks.Add(saveCustomerOrdersTask);
+            userSavingTasks.AddRange(contact.SecurityAccounts.Select(user => SaveUserChangesAsync(user)));
+            await Task.WhenAll(userSavingTasks);
 
             return contact;
         }
