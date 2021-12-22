@@ -2,7 +2,7 @@ angular.module('virtoCommerce.gdpr')
     .factory('virtoCommerce.gdpr.webApi', ['$resource', function ($resource) {
         return $resource('api/gdpr', {}, {
             search: { method: 'POST', url: 'api/gdpr/contacts/search' },
-            delete: { method: 'DELETE', url: 'api/gdpr/contacts/delete' },
-            download: { method: 'GET', url: 'api/gdpr/contacts/download' }
+            anonymize: { method: 'GET', url: 'api/gdpr/contacts/anonymize/:id' },
+            download: { method: 'GET', url: 'api/gdpr/contacts/download/:id' }
         });
     }]);

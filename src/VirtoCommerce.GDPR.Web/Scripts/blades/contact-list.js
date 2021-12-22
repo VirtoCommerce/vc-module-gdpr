@@ -52,7 +52,7 @@ angular.module('virtoCommerce.gdpr')
                 }
             };
 
-            $scope.selectNode = function (data) {
+            blade.selectNode = function (data) {
                 $scope.selectedNodeId = data.id;
 
                 var newBlade = {
