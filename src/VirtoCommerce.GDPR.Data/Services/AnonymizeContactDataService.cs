@@ -28,7 +28,7 @@ namespace VirtoCommerce.GDPR.Data.Services
         /// <summary>
         /// Max count of customer order donload data
         /// </summary>
-        protected virtual int DefaultTake => 9999;
+        protected virtual int DefaultTake => int.MaxValue;
 
         public AnonymizeContactDataService(IMemberService memberService,
             ISearchService<CustomerOrderSearchCriteria, CustomerOrderSearchResult, CustomerOrder> customerOrderSearchService,
