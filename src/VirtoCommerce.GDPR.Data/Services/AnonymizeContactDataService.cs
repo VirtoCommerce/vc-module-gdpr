@@ -50,6 +50,8 @@ namespace VirtoCommerce.GDPR.Data.Services
             contact.FirstName = _anonymName;
             contact.LastName = _anonymName;
             contact.FullName = _anonymName;
+            contact.CreatedBy = _anonymName;
+            contact.ModifiedBy = _anonymName;
             contact.BirthDate = null;
             contact.Emails = new List<string>();
             contact.Phones = new List<string>();
@@ -70,10 +72,16 @@ namespace VirtoCommerce.GDPR.Data.Services
             {
                 user.UserName = $"{Guid.NewGuid():N}";
                 user.Email = GetRandomEmail();
+                user.CreatedBy = _anonymName;
+                user.ModifiedBy = _anonymName;
             }
 
             foreach (var result in customerOrdersSearchResult.Results)
             {
+                result.CustomerName = _anonymName;
+                result.CreatedBy = _anonymName;
+                result.ModifiedBy = _anonymName;
+
                 foreach (var orderAddress in result.Addresses)
                 {
                     orderAddress.FirstName = _anonymName;

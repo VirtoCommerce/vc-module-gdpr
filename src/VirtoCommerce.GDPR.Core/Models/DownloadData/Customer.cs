@@ -11,6 +11,8 @@ namespace VirtoCommerce.GDPR.Core.Models.DownloadData
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
         public DateTime? Birthday { get; set; }
         public ICollection<string> EmailAddresses { get; set; }
         public ICollection<string> Phones { get; set; }
