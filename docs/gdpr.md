@@ -2,11 +2,11 @@
 
 ## Purpose
 
-The GDPR module supplied by Virto is a tool allowing you to supply the customer with or delete their personal details from your online store. It is perfectly in line with the General Data Protection Regulation (GDPR) that enables every individual to request their personal data stored on a website or demand to remove such at any time.
+The GDPR module supplied by Virto is a tool allowing you to supply the customer with or remove their personal details, by anonymizing them, from your online store. It is perfectly in line with the General Data Protection Regulation (GDPR) that enables every individual to request their personal data stored on a website or demand to remove such at any time.
 
 ## What Is GDPR?
 
-The General Data Protection Regulation, or GDPR, is a regulation in the EU law that, basically, provides a right to a private individual residing in the EU to request their personal details stored with a third party at any time and, if applicable, to have them deleted from any third party website. To learn more on GDPR, please go [here](https://gdpr-info.eu/).
+The General Data Protection Regulation, or GDPR, is a regulation in the EU law that, basically, provides a right to a private individual residing in the EU to request their personal details stored with a third party at any time and, if applicable, to have them deleted from any third party website. To learn more about GDPR, please go [here](https://gdpr-info.eu/).
 
 ## What Does It Mean for You?
 
@@ -14,7 +14,7 @@ As an ecommerce store owner, you have to store your customers' details, such as 
 
 ## How Does the GDPR Module Help?
 
-With the GDPR module, you can provide your customer with their details stored on your website right upon their request by downloading those details within a single click of a button; or, you can also remove your customer's details, if they request so.
+With the GDPR module, you can provide your customer with their details stored on your website right upon their request by downloading those details within a single click of a button; or, you can also remove your customer's details, if they request so, by totally anonymizing them.
 
 ### Opening GDPR
 
@@ -42,13 +42,17 @@ To anonymize the details, hit the *Anonymize data* button:
 ![Anonymizing Customer Details](./media/04-gdpr-anonymizing-data_01.png)
 <p align=center>Figure 4: Anonymizing Customer Details</p>
 
-After anonymization customer details:
+Once anonymized, the customer details will look like this:
 
 ![Anonymizing Customer Details](./media/05-gdpr-anonymizing-data-contact-info.png)
-<p align=center>Figure 5: After anonymization - contact info</p>
+<p align=center>Figure 5: Anonymized Contact Info</p>
+
+As you can see on these screen captures, all customer personal details get anonymized, which is strictly in line with the GDPR.
+
+***Note:*** *While customer login and email start appearing as a GUID once anonymized, their address and other personal data will just appear as Anonymized. This is because both login and email must still have valid values to store order data, even after anonymization.*
 
 ![Anonymizing Customer Details](./media/06-gdpr-anonymizing-data-order-info.png)
-<p align=center>Figure 6: After anonymization - order info</p>
+<p align=center>Figure 6: Anonymized Order Details</p>
 
 To download the details, use the *Download data* button:
 
