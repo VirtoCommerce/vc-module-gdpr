@@ -39,7 +39,7 @@ Once you open this page, you can select any customer in the list to view their d
 
 To anonymize the details, hit the *Anonymize data* button:
 
-![Anonymizing Customer Details](./media/04-gdpr-anonymizing-data_01.png)
+![Anonymizing Customer Details](./media/04-gdpr-anonymizing-data.png)
 <p align=center>Figure 4: Anonymizing Customer Details</p>
 
 Once anonymized, the customer details will look like this:
