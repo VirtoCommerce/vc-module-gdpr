@@ -35,17 +35,25 @@ This page will have the details of all your customers. By default, you will see 
 ![Customizing the Details](./media/03-gdpr-customizing-customer-details-view.png)
 <p align=center>Figure 3: Customizing the Customer Details View</p>
 
-Once you open this page, you can select any customer in the list to view their details and, if requested or deemed appropriate, either delete their personal information or download it to further send it to the customer.
+Once you open this page, you can select any customer in the list to view their details and, if requested or deemed appropriate, either anonymize their personal information or download it to further send it to the customer.
 
-To delete the details, hit the *Remove Data* button:
+To anonymize the details, hit the *Anonymize data* button:
 
-![Removing Customer Details](./media/04-gdpr-removing-data_01.png)
-<p align=center>Figure 4: Removing Customer Details</p>
+![Anonymizing Customer Details](./media/04-gdpr-anonymizing-data_01.png)
+<p align=center>Figure 4: Anonymizing Customer Details</p>
+
+After anonymization customer details:
+
+![Anonymizing Customer Details](./media/05-gdpr-anonymizing-data-contact-info.png)
+<p align=center>Figure 5: After anonymization - contact info</p>
+
+![Anonymizing Customer Details](./media/06-gdpr-anonymizing-data-order-info.png)
+<p align=center>Figure 6: After anonymization - order info</p>
 
 To download the details, use the *Download data* button:
 
-![Removing Customer Details](./media/05-gdpr-downloading-data.png)
-<p align=center>Figure 5: Downloading Customer Details</p>
+![Downloading Customer Details](./media/07-gdpr-downloading-data.png)
+<p align=center>Figure 7: Downloading Customer Details</p>
 
 Once downloaded, you will get a JSON file housing all personal details of the appropriate customer:
 
