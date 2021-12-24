@@ -10,17 +10,27 @@ angular.module('virtoCommerce.gdpr')
                 blade.isLoading = false;
             }
 
-            function deleteContact() {
+            function anonymizeContact() {
                 var dialog = {
-                    id: 'confirmDelete',
-                    title: 'gdpr.blades.contact-detail.commands.remove.message.title',
-                    message: 'gdpr.blades.contact-detail.commands.remove.message.text',
-                    callback: function (remove) {
-                        if (remove) {
+                    id: 'confirmAnonymize',
+                    title: 'gdpr.blades.contact-detail.commands.anonymize.message.title',
+                    message: 'gdpr.blades.contact-detail.commands.anonymize.message.text',
+                    callback: function (anonymize) {
+                        if (anonymize) {
                             blade.isLoading = true;
-                            gdprApi.delete({ id: blade.currentEntityId }, function () {
+                            gdprApi.anonymize({ id: blade.currentEntityId }, function (data) {
+                                blade.isLoading = false;
                                 $scope.bladeClose();
-                                blade.parentBlade.refresh();
+                                blade.parentBlade.refresh(true);
+                                if (data.securityAccounts[0]) {
+                                    data.email = data.securityAccounts[0].email ?? '';
+                                    data.login = data.securityAccounts[0].userName ?? '';
+                                }
+                                else {
+                                    data.email = '';
+                                    data.login = '';
+                                }
+                                blade.parentBlade.selectNode(data);
                             });
                         }
                     }
@@ -44,12 +54,12 @@ angular.module('virtoCommerce.gdpr')
 
             blade.toolbarCommands = [
                 {
-                    name: 'gdpr.blades.contact-detail.commands.remove.label', icon: 'fas fa-eraser',
-                    executeMethod: deleteContact,
+                    name: 'gdpr.blades.contact-detail.commands.anonymize.label', icon: 'fas fa-eraser',
+                    executeMethod: anonymizeContact,
                     canExecuteMethod: function () {
                         return true;
                     },
-                    permission: 'gdpr:delete'
+                    permission: 'gdpr:anonymize'
                 },
                 {
                     name: 'gdpr.blades.contact-detail.commands.download.label', icon: 'fas fa-download',

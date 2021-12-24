@@ -16,11 +16,11 @@
         "subtitle": "Account details",
         "header": "User information",
         "commands": {
-          "remove": {
-            "label": "Remove data",
+          "anonymize": {
+            "label": "Anonymize data",
             "message": {
-              "title": "Remove confirmation",
-              "text": "Are you sure you want to remove Account's personal data? All information will be removed."
+              "title": "Anonymize confirmation",
+              "text": "Are you sure you want to anonymize Account's personal data? All information will be anonymized."
             }
           },
           "download": {
@@ -32,8 +32,8 @@
   },
   "permissions": {
     "gdpr:access": "Open GDPR menu",
-    "gdpr:delete": "Delete GDPR related data",
-    "gdpr:download": "Download GDPR related data"
+    "gdpr:anonymize": "Anonymize contact data",
+    "gdpr:download": "Download contact data"
   },
   "settings": {
     "GDPR": {

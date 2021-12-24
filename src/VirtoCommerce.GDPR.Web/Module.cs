@@ -24,6 +24,7 @@ namespace VirtoCommerce.GDPR.Web
             var connectionString = configuration.GetConnectionString("VirtoCommerce.GDPR") ?? configuration.GetConnectionString("VirtoCommerce");
             serviceCollection.AddDbContext<GdprDbContext>(options => options.UseSqlServer(connectionString));
             serviceCollection.AddTransient<IDownloadContactDataService, DownloadContactDataService>();
+            serviceCollection.AddTransient<IAnonymizeContactDataService, AnonymizeContactDataService>();
         }
 
         public void PostInitialize(IApplicationBuilder appBuilder)

@@ -52,6 +52,8 @@ namespace VirtoCommerce.GDPR.Data.Services
                 Birthday = contact.BirthDate,
                 EmailAddresses = contact.Emails,
                 Phones = contact.Phones,
+                CreatedBy = contact.CreatedBy,
+                ModifiedBy = contact.ModifiedBy,
                 Addresses = contact.Addresses.Select(add => new Core.Models.DownloadData.Address
                 {
                     FirstName = add.FirstName,
@@ -68,12 +70,17 @@ namespace VirtoCommerce.GDPR.Data.Services
                 Accounts = contact.SecurityAccounts.Select(acc => new Account
                 {
                     Login = acc.UserName,
-                    EmailAddress = acc.Email
+                    EmailAddress = acc.Email,
+                    CreatedBy = acc.CreatedBy,
+                    ModifiedBy = acc.ModifiedBy
                 }).ToList(),
                 Orders = customerOrders.Results.SelectMany(o =>
                 {
                     return customerOrders.Results.Where(x => x.Id == o.Id).Select(x => new Order
                     {
+                        CustomerName = o.CustomerName,
+                        CreatedBy = o.CreatedBy,
+                        ModifiedBy = o.ModifiedBy,
                         Addresses = o.Addresses.Select(a => new Core.Models.DownloadData.Address
                         {
                             FirstName = a.FirstName,

@@ -16,15 +16,18 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
     public class GdprController : Controller
     {
         private readonly IAuthorizationService _authorizationService;
-        private readonly IMemberService _memberService;
         private readonly IMemberSearchService _memberSearchService;
+        private readonly IAnonymizeContactDataService _anonymizeContactDataService;
         private readonly IDownloadContactDataService _downloadContactDataService;
 
-        public GdprController(IAuthorizationService authorizationService, IMemberService memberService, IMemberSearchService memberSearchService, IDownloadContactDataService downloadContactDataService)
+        public GdprController(IAuthorizationService authorizationService,
+            IMemberSearchService memberSearchService,
+            IAnonymizeContactDataService anonymizeContactDataService,
+            IDownloadContactDataService downloadContactDataService)
         {
             _authorizationService = authorizationService;
-            _memberService = memberService;
             _memberSearchService = memberSearchService;
+            _anonymizeContactDataService = anonymizeContactDataService;
             _downloadContactDataService = downloadContactDataService;
         }
 
@@ -47,18 +50,18 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         }
 
         /// <summary>
-        /// Delete contact by id
+        /// Anonymize contact by id
         /// </summary>
         /// <param name="id">contact id</param>
         /// <returns></returns>
-        [HttpDelete]
-        [Route("contacts/delete")]
-        [Authorize(ModuleConstants.Security.Permissions.Delete)]
+        [HttpGet]
+        [Route("contacts/anonymize/{id}")]
+        [Authorize(ModuleConstants.Security.Permissions.Anonymize)]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> DeleteContact([FromQuery] string id)
+        public async Task<ActionResult<Contact>> AnonymizeContact(string id)
         {
-            await _memberService.DeleteAsync(new[] { id });
-            return NoContent();
+            var result = await _anonymizeContactDataService.AnonymizeContactDataAsync(id);
+            return Ok(result);
         }
 
         /// <summary>
@@ -67,9 +70,9 @@ namespace VirtoCommerce.GDPR.Web.Controllers.Api
         /// <param name="id">contact id</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("contacts/download")]
+        [Route("contacts/download/{id}")]
         [Authorize(ModuleConstants.Security.Permissions.Download)]
-        public async Task<ActionResult<Customer>> DownloadContactInfo([FromQuery] string id)
+        public async Task<ActionResult<Customer>> DownloadContactInfo(string id)
         {
             var result = await _downloadContactDataService.GetContactDataAsync(id);
             return Ok(result);

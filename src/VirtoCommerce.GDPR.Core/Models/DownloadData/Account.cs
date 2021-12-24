@@ -7,5 +7,7 @@ namespace VirtoCommerce.GDPR.Core.Models.DownloadData
     {
         public string Login { get; set; }
         public string EmailAddress { get; set; }
+        public string CreatedBy { get; set; }
+        public string ModifiedBy { get; set; }
     }
 }
