@@ -76,7 +76,7 @@ namespace VirtoCommerce.GDPR.Data.Services
 
             foreach (var user in contact.SecurityAccounts)
             {
-                user.UserName = $"{Guid.NewGuid():N}";
+                user.UserName = $"{_anonymName}_{Guid.NewGuid():N}";
                 user.Email = GetRandomEmail();
                 user.CreatedBy = _anonymName;
                 user.ModifiedBy = _anonymName;
