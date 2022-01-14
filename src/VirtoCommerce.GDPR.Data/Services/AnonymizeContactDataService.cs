@@ -90,6 +90,7 @@ namespace VirtoCommerce.GDPR.Data.Services
 
                 foreach (var orderAddress in result.Addresses)
                 {
+                    orderAddress.Name = _anonymName;
                     orderAddress.FirstName = _anonymName;
                     orderAddress.LastName = _anonymName;
                     orderAddress.City = _anonymName;
@@ -98,6 +99,38 @@ namespace VirtoCommerce.GDPR.Data.Services
                     orderAddress.PostalCode = _anonymPostalCode;
                     orderAddress.Email = GetRandomEmail();
                     orderAddress.Phone = _anonymPhone;
+                }
+
+                foreach (var payment in result.InPayments)
+                {
+                    if (payment.BillingAddress != null)
+                    {
+                        payment.BillingAddress.Name = _anonymName;
+                        payment.BillingAddress.FirstName = _anonymName;
+                        payment.BillingAddress.LastName = _anonymName;
+                        payment.BillingAddress.City = _anonymName;
+                        payment.BillingAddress.Line1 = _anonymName;
+                        payment.BillingAddress.Line2 = _anonymName;
+                        payment.BillingAddress.PostalCode = _anonymPostalCode;
+                        payment.BillingAddress.Email = GetRandomEmail();
+                        payment.BillingAddress.Phone = _anonymPhone;
+                    }
+                }
+
+                foreach (var shipment in result.Shipments)
+                {
+                    if (shipment.DeliveryAddress != null)
+                    {
+                        shipment.DeliveryAddress.Name = _anonymName;
+                        shipment.DeliveryAddress.FirstName = _anonymName;
+                        shipment.DeliveryAddress.LastName = _anonymName;
+                        shipment.DeliveryAddress.City = _anonymName;
+                        shipment.DeliveryAddress.Line1 = _anonymName;
+                        shipment.DeliveryAddress.Line2 = _anonymName;
+                        shipment.DeliveryAddress.PostalCode = _anonymPostalCode;
+                        shipment.DeliveryAddress.Email = GetRandomEmail();
+                        shipment.DeliveryAddress.Phone = _anonymPhone;
+                    }
                 }
             }
 
