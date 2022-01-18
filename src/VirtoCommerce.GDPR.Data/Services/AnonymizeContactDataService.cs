@@ -64,6 +64,7 @@ namespace VirtoCommerce.GDPR.Data.Services
             contact.IsAnonymized = true;
             foreach (var address in contact.Addresses)
             {
+                address.Name = _anonymName;
                 address.FirstName = _anonymName;
                 address.LastName = _anonymName;
                 address.City = _anonymName;

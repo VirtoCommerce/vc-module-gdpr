@@ -56,6 +56,7 @@ namespace VirtoCommerce.GDPR.Data.Services
                 ModifiedBy = contact.ModifiedBy,
                 Addresses = contact.Addresses.Select(add => new Core.Models.DownloadData.Address
                 {
+                    Name = add.Name,
                     FirstName = add.FirstName,
                     LastName = add.LastName,
                     Country = add.CountryName,
