@@ -56,6 +56,7 @@ namespace VirtoCommerce.GDPR.Data.Services
                 ModifiedBy = contact.ModifiedBy,
                 Addresses = contact.Addresses.Select(add => new Core.Models.DownloadData.Address
                 {
+                    Name = add.Name,
                     FirstName = add.FirstName,
                     LastName = add.LastName,
                     Country = add.CountryName,
@@ -83,6 +84,7 @@ namespace VirtoCommerce.GDPR.Data.Services
                         ModifiedBy = o.ModifiedBy,
                         Addresses = o.Addresses.Select(a => new Core.Models.DownloadData.Address
                         {
+                            Name = a.Name,
                             FirstName = a.FirstName,
                             LastName = a.LastName,
                             Country = a.CountryName,
@@ -93,7 +95,35 @@ namespace VirtoCommerce.GDPR.Data.Services
                             ZipCode = a.PostalCode,
                             Email = a.Email,
                             Phone = a.Phone
-                        }).ToList()
+                        }).ToList(),
+                        InPayments = o.InPayments.Select(p => new Core.Models.DownloadData.Address
+                        {
+                            Name = p.BillingAddress?.Name,
+                            FirstName = p.BillingAddress?.FirstName,
+                            LastName = p.BillingAddress?.LastName,
+                            Country = p.BillingAddress?.CountryName,
+                            Region = p.BillingAddress?.RegionName,
+                            City = p.BillingAddress?.City,
+                            Line1 = p.BillingAddress?.Line1,
+                            Line2 = p.BillingAddress?.Line2,
+                            ZipCode = p.BillingAddress?.PostalCode,
+                            Email = p.BillingAddress?.Email,
+                            Phone = p.BillingAddress?.Phone
+                        }).ToList(),
+                        Shipments = o.Shipments.Select(s => new Core.Models.DownloadData.Address
+                        {
+                            Name = s.DeliveryAddress?.Name,
+                            FirstName = s.DeliveryAddress?.FirstName,
+                            LastName = s.DeliveryAddress?.LastName,
+                            Country = s.DeliveryAddress?.CountryName,
+                            Region = s.DeliveryAddress?.RegionName,
+                            City = s.DeliveryAddress?.City,
+                            Line1 = s.DeliveryAddress?.Line1,
+                            Line2 = s.DeliveryAddress?.Line2,
+                            ZipCode = s.DeliveryAddress?.PostalCode,
+                            Email = s.DeliveryAddress?.Email,
+                            Phone = s.DeliveryAddress?.Phone
+                        }).ToList(),
                     });
                 }).ToList()
             };
