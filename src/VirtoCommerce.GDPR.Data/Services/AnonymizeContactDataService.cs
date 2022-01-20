@@ -131,11 +131,7 @@ namespace VirtoCommerce.GDPR.Data.Services
                 }
             }
 
-            Triggers<IAuditable>.Updating += entry =>
-            {
-                entry.Entity.CreatedBy = _anonymName;
-                entry.Entity.ModifiedBy = _anonymName;
-            };
+            // TODO need update CreatedBy, ModifiedBy for Contact, CustomerOrder, User. Need to create UseDbTriggers for anonymized entities
 
             await _memberService.SaveChangesAsync(new[] { contact });
             await _customerOrderService.SaveChangesAsync(customerOrdersSearchResult.Results.ToArray());
