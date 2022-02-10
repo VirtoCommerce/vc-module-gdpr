@@ -2,45 +2,18 @@
 
 ## Overview
 
-Short overview of what the new module is.
-
-- What is the new or updated experience?
-
-- Does this module replace an existing module/experience? If yes, what is the transition plan?
-
-- Does this module has dependency on other ? If yes, list/explain the dependencies.
-
-- List the key deployment scenarios - why would people use this module?
+The GDPR module supplied by Virto is a tool allowing you to supply the customer with or remove their personal details, by anonymizing them, from your online store. It is perfectly in line with the General Data Protection Regulation (GDPR) that enables every individual to request their personal data stored on a website or demand to remove such at any time.
 
 ## Functional Requirements
 
-Short description of the new module functional requirements.
+Platform Version 3.85.0
+Dependencies:
+VirtoCommerce.Customer 3.34.0,
+VirtoCommerce.Orders 3.48.0
 
-## Scenarios
+## Documentation
 
-List of scenarios that the new module implements
-
-1. [Scenario 1](/doc/scenario-name1.md)
-1. [Scenario 2](/doc/scenario-name2.md)
-1. [Scenario 3](/doc/scenario-name3.md)
-    1. [Scenario 3.1](/doc/scenario-name31.md)
-    1. [Scenario 3.2](/doc/scenario-name32.md)
-1. [Scenario 4](/doc/scenario-name4.md)
-
-## Web API
-
-Web API documentation for each module is built out automatically and can be accessed by following the link bellow:
-<https://link-to-swager-api>
-
-## Database Model
-
-![DB model](./docs/media/diagram-db-model.png)
-
-## Related topics
-
-[Some Article1](some-article1.md)
-
-[Some Article2](some-article2.md)
+https://virtocommerce.com/docs/modules/gdpr/gdpr/
 
 ## License
 
