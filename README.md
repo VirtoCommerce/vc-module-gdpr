@@ -19,7 +19,7 @@ To learn how the GDPR module works, please go [here](https://virtocommerce.com/d
 
 Copyright (c) Virto Solutions LTD.  All rights reserved.
 
-Licensed under the Virto Commerce Open Software License (the "License"); you
+This product is licensed under the Virto Commerce Open Software License (the "License"); you
 may not use this file except in compliance with the License. You may
 obtain a copy of the License at <http://virtocommerce.com/opensourcelicense>.
 
