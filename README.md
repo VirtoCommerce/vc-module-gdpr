@@ -6,14 +6,14 @@ The GDPR module supplied by Virto is a tool allowing you to supply the customer 
 
 ## Functional Requirements
 
-Platform Version 3.85.0
-Dependencies:
-VirtoCommerce.Customer 3.34.0,
-VirtoCommerce.Orders 3.48.0
+For the GDPR module to work correctly, you must have installed the Virto Commerce Platform version 3.85.0 or above.
+These modules are also required for GDPR to work, so make sure you have them on board:
++ VirtoCommerce.Customer 3.34.0 or above
++ VirtoCommerce.Orders 3.48.0 or above
 
 ## Documentation
 
-https://virtocommerce.com/docs/modules/gdpr/gdpr/
+To learn how the GDPR module works, please go [here](https://virtocommerce.com/docs/modules/gdpr/gdpr).
 
 ## License
 
@@ -21,11 +21,9 @@ Copyright (c) Virto Solutions LTD.  All rights reserved.
 
 Licensed under the Virto Commerce Open Software License (the "License"); you
 may not use this file except in compliance with the License. You may
-obtain a copy of the License at
+obtain a copy of the License at <http://virtocommerce.com/opensourcelicense>.
 
-<http://virtocommerce.com/opensourcelicense>
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
+Unless required by applicable law or agreed to in writing, the software
+distributed under the License is provided on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
 implied.
