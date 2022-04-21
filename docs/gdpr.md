@@ -117,3 +117,22 @@ Once downloaded, you will get a JSON file housing all personal details of the ap
 </details>
 
 For better readability, you can then convert the JSON output into text or CSV before sending the details to your customer.
+
+## Process Chart
+
+The chart below shows how the GDPR lifetime basically works:
+
+![Process Chart](./media/08-gdpr-process-chart.png)
+
+## Data Model
+
+The data model below shows where the data comes from:
+
+![Data Model](./media/09-gdpr-diagram-db-model.png)
+
+## Permissions
+
+The GDPR module provides a set of permissions: access, anonymize and download.
+
+![Permissions](./media/10-gdpr-permissions.png)
+
