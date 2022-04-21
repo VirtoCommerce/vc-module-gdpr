@@ -120,7 +120,7 @@ For better readability, you can then convert the JSON output into text or CSV be
 
 ## Process Chart
 
-The chart below shows how the GDPR lifetime basically works:
+The chart below shows how the GDPR life cycle basically works:
 
 ![Process Chart](./media/08-gdpr-process-chart.png)
 
@@ -132,7 +132,7 @@ The data model below shows where the data comes from:
 
 ## Permissions
 
-The GDPR module provides a set of permissions: access, anonymize and download.
+The GDPR module provides a set of permissions: access, anonymize, and download.
 
 ![Permissions](./media/10-gdpr-permissions.png)
 
