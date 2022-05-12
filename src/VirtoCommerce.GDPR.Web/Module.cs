@@ -20,9 +20,12 @@ namespace VirtoCommerce.GDPR.Web
         public void Initialize(IServiceCollection serviceCollection)
         {
             // database initialization
-            var configuration = serviceCollection.BuildServiceProvider().GetRequiredService<IConfiguration>();
-            var connectionString = configuration.GetConnectionString("VirtoCommerce.GDPR") ?? configuration.GetConnectionString("VirtoCommerce");
-            serviceCollection.AddDbContext<GdprDbContext>(options => options.UseSqlServer(connectionString));
+            serviceCollection.AddDbContext<GdprDbContext>((provider, options) =>
+            {
+                var configuration = provider.GetRequiredService<IConfiguration>();
+                options.UseSqlServer(configuration.GetConnectionString(ModuleInfo.Id) ?? configuration.GetConnectionString("VirtoCommerce"));
+            });
+
             serviceCollection.AddTransient<IDownloadContactDataService, DownloadContactDataService>();
             serviceCollection.AddTransient<IAnonymizeContactDataService, AnonymizeContactDataService>();
         }
