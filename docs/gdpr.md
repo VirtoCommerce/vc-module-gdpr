@@ -1,6 +1,4 @@
-# GDPR Module Overview
-
-## Purpose
+# Overview
 
 The GDPR module supplied by Virto is a tool allowing you to supply the customer with or remove their personal details, by anonymizing them, from your online store. It is perfectly in line with the General Data Protection Regulation (GDPR) that enables every individual to request their personal data stored on a website or demand to remove such at any time.
 
