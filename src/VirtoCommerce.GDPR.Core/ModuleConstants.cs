@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using VirtoCommerce.Platform.Core.Settings;
-
 namespace VirtoCommerce.GDPR.Core
 {
     public static class ModuleConstants
@@ -14,36 +11,6 @@ namespace VirtoCommerce.GDPR.Core
                 public const string Download = "gdpr:download";
 
                 public static string[] AllPermissions { get; } = { Access, Anonymize, Download };
-            }
-        }
-
-        public static class Settings
-        {
-            public static class General
-            {
-                public static SettingDescriptor GDPRPassword { get; } = new SettingDescriptor
-                {
-                    Name = "GDPR.GDPRPassword",
-                    GroupName = "GDPR|Advanced",
-                    ValueType = SettingValueType.SecureString,
-                    DefaultValue = "qwerty"
-                };
-
-                public static IEnumerable<SettingDescriptor> AllSettings
-                {
-                    get
-                    {
-                        yield return GDPRPassword;
-                    }
-                }
-            }
-
-            public static IEnumerable<SettingDescriptor> AllSettings
-            {
-                get
-                {
-                    return General.AllSettings;
-                }
             }
         }
     }

@@ -2,16 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EntityFrameworkCore.Triggers;
 using Microsoft.AspNetCore.Identity;
 using VirtoCommerce.CustomerModule.Core.Model;
 using VirtoCommerce.CustomerModule.Core.Services;
 using VirtoCommerce.GDPR.Core.Services;
-using VirtoCommerce.OrdersModule.Core.Model;
 using VirtoCommerce.OrdersModule.Core.Model.Search;
 using VirtoCommerce.OrdersModule.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
-using VirtoCommerce.Platform.Core.GenericCrud;
 using VirtoCommerce.Platform.Core.Security;
 
 namespace VirtoCommerce.GDPR.Data.Services
@@ -19,7 +16,7 @@ namespace VirtoCommerce.GDPR.Data.Services
     public class AnonymizeContactDataService : IAnonymizeContactDataService
     {
         private readonly IMemberService _memberService;
-        private readonly ISearchService<CustomerOrderSearchCriteria, CustomerOrderSearchResult, CustomerOrder> _customerOrderSearchService;
+        private readonly ICustomerOrderSearchService _customerOrderSearchService;
         private readonly ICustomerOrderService _customerOrderService;
         private readonly Func<UserManager<ApplicationUser>> _userManagerFactory;
         private readonly string _anonymName = "Anonymized";
@@ -27,12 +24,13 @@ namespace VirtoCommerce.GDPR.Data.Services
         private readonly string _anonymPhone = "+00000000000";
 
         /// <summary>
-        /// Max count of customer order donload data
+        /// Max count of customer order download data
         /// </summary>
         protected virtual int DefaultTake => int.MaxValue;
 
-        public AnonymizeContactDataService(IMemberService memberService,
-            ISearchService<CustomerOrderSearchCriteria, CustomerOrderSearchResult, CustomerOrder> customerOrderSearchService,
+        public AnonymizeContactDataService(
+            IMemberService memberService,
+            ICustomerOrderSearchService customerOrderSearchService,
             ICustomerOrderService customerOrderService,
             Func<UserManager<ApplicationUser>> userManager)
         {
@@ -48,7 +46,7 @@ namespace VirtoCommerce.GDPR.Data.Services
 
             var orderSearchCriteria = AbstractTypeFactory<CustomerOrderSearchCriteria>.TryCreateInstance();
 
-            var accountIds = contact.SecurityAccounts.Select(x => x.Id).Concat(new string[] { contact.Id });
+            var accountIds = contact.SecurityAccounts.Select(x => x.Id).Concat(new[] { contact.Id });
             orderSearchCriteria.CustomerIds = accountIds.ToArray();
             orderSearchCriteria.Take = DefaultTake;
 
@@ -133,7 +131,7 @@ namespace VirtoCommerce.GDPR.Data.Services
 
             // TODO need update CreatedBy, ModifiedBy for Contact, CustomerOrder, User. Need to create UseDbTriggers for anonymized entities
 
-            await _memberService.SaveChangesAsync(new[] { contact });
+            await _memberService.SaveChangesAsync(new Member[] { contact });
             await _customerOrderService.SaveChangesAsync(customerOrdersSearchResult.Results.ToArray());
             foreach (var user in contact.SecurityAccounts)
             {
