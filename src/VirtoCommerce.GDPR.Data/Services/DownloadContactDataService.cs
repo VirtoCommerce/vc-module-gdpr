@@ -4,24 +4,23 @@ using VirtoCommerce.CustomerModule.Core.Model;
 using VirtoCommerce.CustomerModule.Core.Services;
 using VirtoCommerce.GDPR.Core.Models.DownloadData;
 using VirtoCommerce.GDPR.Core.Services;
-using VirtoCommerce.OrdersModule.Core.Model;
 using VirtoCommerce.OrdersModule.Core.Model.Search;
+using VirtoCommerce.OrdersModule.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
-using VirtoCommerce.Platform.Core.GenericCrud;
 
 namespace VirtoCommerce.GDPR.Data.Services
 {
     public class DownloadContactDataService : IDownloadContactDataService
     {
         private readonly IMemberService _memberService;
-        private readonly ISearchService<CustomerOrderSearchCriteria, CustomerOrderSearchResult, CustomerOrder> _customerOrderSearchService;
+        private readonly ICustomerOrderSearchService _customerOrderSearchService;
 
         /// <summary>
-        /// Max count of customer order donload data
+        /// Max count of customer order download data
         /// </summary>
         protected virtual int DefaultTake => 9999;
 
-        public DownloadContactDataService(IMemberService memberService, ISearchService<CustomerOrderSearchCriteria, CustomerOrderSearchResult, CustomerOrder> customerOrderSearchService)
+        public DownloadContactDataService(IMemberService memberService, ICustomerOrderSearchService customerOrderSearchService)
         {
             _memberService = memberService;
             _customerOrderSearchService = customerOrderSearchService;
@@ -38,7 +37,7 @@ namespace VirtoCommerce.GDPR.Data.Services
 
             var orderSearchCriteria = AbstractTypeFactory<CustomerOrderSearchCriteria>.TryCreateInstance();
             // in old version: CustomerOrder.CustomerId = Member.Id, but in new version: CustomerOrder.CustomerId = AspNetUsers.Id, so we return both variants in here
-            var accountIds = contact.SecurityAccounts.Select(x => x.Id).Concat(new string[] { contact.Id });
+            var accountIds = contact.SecurityAccounts.Select(x => x.Id).Concat(new[] { contact.Id });
             orderSearchCriteria.CustomerIds = accountIds.ToArray();
             orderSearchCriteria.Take = DefaultTake;
 

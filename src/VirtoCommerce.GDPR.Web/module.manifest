@@ -1,9 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <id>VirtoCommerce.GDPR</id>
   <version>3.400.0</version>
   <version-tag />
-  <platformVersion>3.200.0</platformVersion>
+
+  <platformVersion>3.400.0</platformVersion>
+  <dependencies>
+    <dependency id="VirtoCommerce.Customer" version="3.400.0" />
+    <dependency id="VirtoCommerce.Orders" version="3.400.0" />
+  </dependencies>
+
   <title>GDPR module</title>
   <description>GDPR module</description>
   <authors>
@@ -14,13 +20,9 @@
   </owners>
   <requireLicenseAcceptance>false</requireLicenseAcceptance>
   <releaseNotes>First version.</releaseNotes>
-  <copyright>Copyright © 2022 VirtoCommerce. All rights reserved</copyright>
+  <copyright>Copyright © 2022–2023 VirtoCommerce. All rights reserved</copyright>
   <tags>extension module</tags>
   <assemblyFile>VirtoCommerce.GDPR.Web.dll</assemblyFile>
   <moduleType>VirtoCommerce.GDPR.Web.Module, VirtoCommerce.GDPR.Web</moduleType>
-  <dependencies>
-    <dependency id="VirtoCommerce.Customer" version="3.200.0" />
-    <dependency id="VirtoCommerce.Orders" version="3.200.0" />
-  </dependencies>
   <useFullTypeNameInSwagger>false</useFullTypeNameInSwagger>
 </module>
