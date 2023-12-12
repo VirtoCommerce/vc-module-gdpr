@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <PropertyGroup>
     <!-- Project is not a test project -->
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="VirtoCommerce.CustomerModule.Core" Version="3.400.0" />
+    <PackageReference Include="VirtoCommerce.CustomerModule.Core" Version="3.800.0-alpha.802-pt-14740-net8" />
   </ItemGroup>
 </Project>
