@@ -1,3 +1,5 @@
+using VirtoCommerce.Platform.Core.Swagger;
+
 namespace VirtoCommerce.GDPR.Core.Models.DownloadData
 {
     /// <summary>
