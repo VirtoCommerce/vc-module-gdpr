@@ -1,8 +1,11 @@
+using VirtoCommerce.Platform.Core.Swagger;
+
 namespace VirtoCommerce.GDPR.Core.Models.DownloadData
 {
     /// <summary>
     /// Customer account download data
     /// </summary>
+    [SwaggerSchemaId("GDPRAccount")]
     public class Account
     {
         public string Login { get; set; }

@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using VirtoCommerce.Platform.Core.Swagger;
 
 namespace VirtoCommerce.GDPR.Core.Models.DownloadData
 {
     /// <summary>
     /// Customer order download data
     /// </summary>
+    [SwaggerSchemaId("GDPROrder")]
     public class Order
     {
         public string CustomerName { get; set; }

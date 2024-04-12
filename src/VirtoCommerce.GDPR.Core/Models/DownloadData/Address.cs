@@ -3,6 +3,7 @@ namespace VirtoCommerce.GDPR.Core.Models.DownloadData
     /// <summary>
     /// Customer, order address download data
     /// </summary>
+    [SwaggerSchemaId("GDPRAddress")]
     public class Address
     {
         public string Name { get; set; }
