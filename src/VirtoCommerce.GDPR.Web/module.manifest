@@ -10,8 +10,8 @@
     <dependency id="VirtoCommerce.Orders" version="3.800.0" />
   </dependencies>
 
-  <title>GDPR module</title>
-  <description>GDPR module</description>
+  <title>GDPR</title>
+  <description>Apply General Data Protection Regulation policies with review or remove their personal details, by anonymizing them, from your online store.</description>
   <authors>
     <author>Leysan Nigmatullina</author>
   </authors>
