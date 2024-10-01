@@ -8,7 +8,7 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.800.0" />
+    <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.853.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.GDPR.Core\VirtoCommerce.GDPR.Core.csproj" />
