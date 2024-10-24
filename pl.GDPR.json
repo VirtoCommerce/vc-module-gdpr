@@ -1,0 +1,50 @@
+{
+  "gdpr": {
+    "blades": {
+      "main-title": "RODO",
+      "main-subtitle": "Zarządzanie danymi osobowymi",
+      "contact-list": {
+        "title": "Klienci",
+        "labels": {
+          "full-name": "Pełne imię i nazwisko",
+          "login": "Login",
+          "email": "E-mail",
+          "birthday": "Data urodzenia"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "Szczegóły konta",
+        "header": "Informacje o użytkowniku",
+        "commands": {
+          "anonymize": {
+            "label": "Anonimizuj dane",
+            "message": {
+              "title": "Potwierdzenie anonimizacji",
+              "text": "Czy na pewno chcesz zanonimizować dane osobowe na swoim koncie? Wszystkie informacje zostaną zanonimizowane"
+            }
+          },
+          "download": {
+            "label": "Pobierz dane"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "gdpr:access": "Otwórz menu RODO",
+    "gdpr:anonymize": "Anonimizuj dane kontaktowe",
+    "gdpr:download": "Pobierz dane kontaktowe"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "Hasło RODO",
+        "description": "Ustawienie hasła RODO"
+      },
+      "GDPREnabled": {
+        "title": "RODO włączone",
+        "description": "Ustawienie włączenia RODO"
+      }
+    }
+  }
+}
