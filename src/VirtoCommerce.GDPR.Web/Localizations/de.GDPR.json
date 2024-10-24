@@ -1,0 +1,50 @@
+{
+  "gdpr": {
+    "blades": {
+      "main-title": "DSGVO",
+      "main-subtitle": "Verwaltung personenbezogener Daten",
+      "contact-list": {
+        "title": "Kunden",
+        "labels": {
+          "full-name": "Vollständiger Name",
+          "login": "Anmeldung",
+          "email": "E-Mail",
+          "birthday": "Geburtstag"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "Kontodetails",
+        "header": "Benutzerinformationen",
+        "commands": {
+          "anonymize": {
+            "label": "Daten anonymisieren",
+            "message": {
+              "title": "Anonymisierungsbestätigung",
+              "text": "Sind Sie sicher, dass Sie die personenbezogenen Daten in Ihrem Konto anonymisieren möchten? Alle Informationen werden anonymisiert"
+            }
+          },
+          "download": {
+            "label": "Daten herunterladen"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "gdpr:access": "DSGVO-Menü öffnen",
+    "gdpr:anonymize": "Kontaktdaten anonymisieren",
+    "gdpr:download": "Kontaktdaten herunterladen"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "DSGVO-Passwort",
+        "description": "DSGVO-Passworteinstellung"
+      },
+      "GDPREnabled": {
+        "title": "DSGVO aktiviert",
+        "description": "DSGVO-Aktivierungseinstellung"
+      }
+    }
+  }
+}

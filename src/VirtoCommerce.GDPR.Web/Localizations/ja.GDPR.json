@@ -1,0 +1,50 @@
+{
+  "gdpr": {
+    "blades": {
+      "main-title": "GDPR",
+      "main-subtitle": "個人データ管理",
+      "contact-list": {
+        "title": "顧客",
+        "labels": {
+          "full-name": "氏名",
+          "login": "ログイン",
+          "email": "メールアドレス",
+          "birthday": "生年月日"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "アカウント詳細",
+        "header": "ユーザー情報",
+        "commands": {
+          "anonymize": {
+            "label": "データを匿名化",
+            "message": {
+              "title": "匿名化の確認",
+              "text": "アカウントの個人データを匿名化してもよろしいですか？すべての情報が匿名化されます"
+            }
+          },
+          "download": {
+            "label": "データをダウンロード"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "gdpr:access": "GDPRメニューを開く",
+    "gdpr:anonymize": "連絡先データを匿名化",
+    "gdpr:download": "連絡先データをダウンロード"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "GDPRパスワード",
+        "description": "GDPRパスワード設定"
+      },
+      "GDPREnabled": {
+        "title": "GDPR有効",
+        "description": "GDPR有効設定"
+      }
+    }
+  }
+}

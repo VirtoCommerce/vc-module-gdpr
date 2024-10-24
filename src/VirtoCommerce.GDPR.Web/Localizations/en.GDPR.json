@@ -6,7 +6,7 @@
       "contact-list": {
         "title": "Customers",
         "labels": {
-          "full-name": "Full Name",
+          "full-name": "Full name",
           "login": "Login",
           "email": "Email",
           "birthday": "Birthday"
@@ -20,7 +20,7 @@
             "label": "Anonymize data",
             "message": {
               "title": "Anonymize confirmation",
-              "text": "Are you sure you want to anonymize Account's personal data? All information will be anonymized."
+              "text": "Are you sure you want to anonymize the personal data in your account? All information will be anonymized"
             }
           },
           "download": {
@@ -38,12 +38,12 @@
   "settings": {
     "GDPR": {
       "GDPRPassword": {
-        "title": "GDPR Password",
-        "description": "GDPR Password setting"
+        "title": "GDPR password",
+        "description": "GDPR password setting"
       },
       "GDPREnabled": {
-        "title": "GDPR Enabled",
-        "description": "GDPR Enabled setting"
+        "title": "GDPR enabled",
+        "description": "GDPR enabled setting"
       }
     }
   }
