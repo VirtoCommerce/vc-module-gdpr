@@ -1,0 +1,50 @@
+{
+  "gdpr": {
+    "blades": {
+      "main-title": "GDPR",
+      "main-subtitle": "Управление персональными данными",
+      "contact-list": {
+        "title": "Клиенты",
+        "labels": {
+          "full-name": "Полное имя",
+          "login": "Логин",
+          "email": "Электронная почта",
+          "birthday": "Дата рождения"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "Детали аккаунта",
+        "header": "Информация о пользователе",
+        "commands": {
+          "anonymize": {
+            "label": "Анонимизировать данные",
+            "message": {
+              "title": "Подтверждение анонимизации",
+              "text": "Вы уверены, что хотите анонимизировать персональные данные в вашем аккаунте? Вся информация будет анонимизирована"
+            }
+          },
+          "download": {
+            "label": "Скачать данные"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "gdpr:access": "Открыть меню GDPR",
+    "gdpr:anonymize": "Анонимизировать контактные данные",
+    "gdpr:download": "Скачать контактные данные"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "Пароль GDPR",
+        "description": "Настройка пароля GDPR"
+      },
+      "GDPREnabled": {
+        "title": "GDPR включен",
+        "description": "Настройка включения GDPR"
+      }
+    }
+  }
+}

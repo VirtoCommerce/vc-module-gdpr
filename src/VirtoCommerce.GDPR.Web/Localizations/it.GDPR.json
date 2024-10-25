@@ -1,0 +1,50 @@
+{
+  "gdpr": {
+    "blades": {
+      "main-title": "GDPR",
+      "main-subtitle": "Gestione dei dati personali",
+      "contact-list": {
+        "title": "Clienti",
+        "labels": {
+          "full-name": "Nome completo",
+          "login": "Nome utente",
+          "email": "Email",
+          "birthday": "Data di nascita"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "Dettagli dell'account",
+        "header": "Informazioni utente",
+        "commands": {
+          "anonymize": {
+            "label": "Anonimizza i dati",
+            "message": {
+              "title": "Conferma anonimizzazione",
+              "text": "Sei sicuro di voler anonimizzare i dati personali nel tuo account? Tutte le informazioni saranno anonimizzate"
+            }
+          },
+          "download": {
+            "label": "Scarica i dati"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "gdpr:access": "Apri menu GDPR",
+    "gdpr:anonymize": "Anonimizza dati di contatto",
+    "gdpr:download": "Scarica dati di contatto"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "Password GDPR",
+        "description": "Impostazione password GDPR"
+      },
+      "GDPREnabled": {
+        "title": "GDPR abilitato",
+        "description": "Impostazione abilitazione GDPR"
+      }
+    }
+  }
+}

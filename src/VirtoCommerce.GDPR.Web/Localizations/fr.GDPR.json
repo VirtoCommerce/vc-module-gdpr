@@ -1,0 +1,50 @@
+{
+  "gdpr": {
+    "blades": {
+      "main-title": "RGPD",
+      "main-subtitle": "Gestion des données personnelles",
+      "contact-list": {
+        "title": "Clients",
+        "labels": {
+          "full-name": "Nom complet",
+          "login": "Identifiant",
+          "email": "E-mail",
+          "birthday": "Date de naissance"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "Détails du compte",
+        "header": "Informations utilisateur",
+        "commands": {
+          "anonymize": {
+            "label": "Anonymiser les données",
+            "message": {
+              "title": "Confirmation d'anonymisation",
+              "text": "Êtes-vous sûr de vouloir anonymiser les données personnelles de votre compte ? Toutes les informations seront anonymisées"
+            }
+          },
+          "download": {
+            "label": "Télécharger les données"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "gdpr:access": "Ouvrir le menu RGPD",
+    "gdpr:anonymize": "Anonymiser les données de contact",
+    "gdpr:download": "Télécharger les données de contact"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "Mot de passe RGPD",
+        "description": "Paramètre du mot de passe RGPD"
+      },
+      "GDPREnabled": {
+        "title": "RGPD activé",
+        "description": "Paramètre d'activation du RGPD"
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "gdpr": {
+    "blades": {
+      "main-title": "GDPR",
+      "main-subtitle": "个人数据管理",
+      "contact-list": {
+        "title": "客户",
+        "labels": {
+          "full-name": "全名",
+          "login": "登录名",
+          "email": "电子邮箱",
+          "birthday": "生日"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "账户详情",
+        "header": "用户信息",
+        "commands": {
+          "anonymize": {
+            "label": "匿名化数据",
+            "message": {
+              "title": "匿名化确认",
+              "text": "您确定要匿名化您账户中的个人数据吗？所有信息都将被匿名化"
+            }
+          },
+          "download": {
+            "label": "下载数据"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "gdpr:access": "打开GDPR菜单",
+    "gdpr:anonymize": "匿名化联系人数据",
+    "gdpr:download": "下载联系人数据"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "GDPR密码",
+        "description": "设置GDPR模块密码"
+      },
+      "GDPREnabled": {
+        "title": "启用GDPR",
+        "description": "GDPR启用设置"
+      }
+    }
+  }
+}
