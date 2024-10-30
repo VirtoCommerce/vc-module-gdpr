@@ -32,7 +32,7 @@ angular.module(moduleName, [])
             var menuItem = {
                 path: 'browse/GDPR',
                 icon: 'fas fa-key',
-                title: 'GDPR',
+                title: 'gdpr.blades.main-title',
                 priority: 100,
                 action: function () { $state.go('workspace.gdpr'); },
                 permission: 'gdpr:access'
