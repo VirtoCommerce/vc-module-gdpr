@@ -1,6 +1,6 @@
 angular.module('virtoCommerce.gdpr')
-    .controller('virtoCommerce.gdpr.gdprMainController', ['$scope', 'platformWebApp.bladeUtils', '$translate',
-        function ($scope, bladeUtils, $translate) {
+    .controller('virtoCommerce.gdpr.gdprMainController', ['$scope', 'platformWebApp.bladeUtils', 
+        function ($scope, bladeUtils) {
             $scope.selectedNodeId = null;
 
             var blade = $scope.blade;
@@ -20,7 +20,6 @@ angular.module('virtoCommerce.gdpr')
 
                 blade.currentEntities = entities;
                 blade.isLoading = false;
-                blade.openBlade(entities[0]);
             }
 
             blade.openBlade = function (data) {
