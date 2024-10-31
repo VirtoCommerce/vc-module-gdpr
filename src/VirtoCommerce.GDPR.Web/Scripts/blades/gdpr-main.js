@@ -14,7 +14,7 @@ angular.module('virtoCommerce.gdpr')
                 var entities = [{
                     id: 1,
                     entityName: 'customers',
-                    name: $translate.instant('gdpr.blades.contact-list.title'),
+                    name: 'gdpr.blades.contact-list.title',
                     icon: 'fas fa-user'
                 }];
 
