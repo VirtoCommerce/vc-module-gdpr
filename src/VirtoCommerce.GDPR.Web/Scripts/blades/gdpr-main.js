@@ -1,9 +1,10 @@
 angular.module('virtoCommerce.gdpr')
-    .controller('virtoCommerce.gdpr.gdprMainController', ['$scope', 'platformWebApp.dialogService', 'platformWebApp.bladeUtils', 'platformWebApp.uiGridHelper', 'virtoCommerce.customerModule.memberTypesResolverService', 'platformWebApp.ui-grid.extension',
-        function ($scope, dialogService, bladeUtils, uiGridHelper, memberTypesResolverService, gridOptionExtension) {
+    .controller('virtoCommerce.gdpr.gdprMainController', ['$scope', 'platformWebApp.bladeUtils', 
+        function ($scope, bladeUtils) {
             $scope.selectedNodeId = null;
 
             var blade = $scope.blade;
+
             blade.title = 'gdpr.blades.main-title';
             blade.subtitle = 'gdpr.blades.main-subtitle';
             blade.headIcon = 'fas fa-key';
@@ -13,12 +14,12 @@ angular.module('virtoCommerce.gdpr')
                 var entities = [{
                     id: 1,
                     entityName: 'customers',
-                    name: 'Customers',
+                    name: 'gdpr.blades.contact-list.title',
                     icon: 'fas fa-user'
                 }];
+
                 blade.currentEntities = entities;
                 blade.isLoading = false;
-                blade.openBlade(entities[0]);
             }
 
             blade.openBlade = function (data) {
