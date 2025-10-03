@@ -1,0 +1,50 @@
+{
+  "gdpr": {
+    "blades": {
+      "main-title": "GDPR",
+      "main-subtitle": "Henkilötietojen hallinta",
+      "contact-list": {
+        "title": "Asiakkaat",
+        "labels": {
+          "full-name": "Koko nimi",
+          "login": "Kirjautuminen",
+          "email": "Sähköposti",
+          "birthday": "Syntymäpäivä"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "Tilin tiedot",
+        "header": "Käyttäjän tiedot",
+        "commands": {
+          "anonymize": {
+            "label": "Anonymisoi tiedot",
+            "message": {
+              "title": "Anonymisoinnin vahvistus",
+              "text": "Oletko varma, että haluat anonymisoida tilisi henkilötiedot? Kaikki tiedot anonymisoidaan"
+            }
+          },
+          "download": {
+            "label": "Lataa tiedot"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "gdpr:access": "Avaa GDPR-valikko",
+    "gdpr:anonymize": "Anonymisoi yhteystiedot",
+    "gdpr:download": "Lataa yhteystiedot"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "GDPR-salasana",
+        "description": "GDPR-salasanan asetus"
+      },
+      "GDPREnabled": {
+        "title": "GDPR käytössä",
+        "description": "GDPR-käytössä-asetus"
+      }
+    }
+  }
+}
