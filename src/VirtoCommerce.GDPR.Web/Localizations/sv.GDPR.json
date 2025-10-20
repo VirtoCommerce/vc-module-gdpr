@@ -1,0 +1,50 @@
+{
+  "gdpr": {
+    "blades": {
+      "main-title": "GDPR",
+      "main-subtitle": "Hantering av personuppgifter",
+      "contact-list": {
+        "title": "Kunder",
+        "labels": {
+          "full-name": "Fullständigt namn",
+          "login": "Inloggning",
+          "email": "E-post",
+          "birthday": "Födelsedag"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "Kontodetaljer",
+        "header": "Användarinformation",
+        "commands": {
+          "anonymize": {
+            "label": "Anonymisera data",
+            "message": {
+              "title": "Bekräftelse av anonymisering",
+              "text": "Är du säker på att du vill anonymisera personuppgifterna i ditt konto? All information kommer att anonymiseras"
+            }
+          },
+          "download": {
+            "label": "Ladda ner data"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "gdpr:access": "Öppna GDPR-menyn",
+    "gdpr:anonymize": "Anonymisera kontaktuppgifter",
+    "gdpr:download": "Ladda ner kontaktuppgifter"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "GDPR-lösenord",
+        "description": "Inställning för GDPR-lösenord"
+      },
+      "GDPREnabled": {
+        "title": "GDPR aktiverat",
+        "description": "Inställning för GDPR-aktivering"
+      }
+    }
+  }
+}

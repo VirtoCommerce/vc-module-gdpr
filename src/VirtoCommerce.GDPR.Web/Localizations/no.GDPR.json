@@ -1,0 +1,50 @@
+{
+  "gdpr": {
+    "blades": {
+      "main-title": "GDPR",
+      "main-subtitle": "Administrasjon av personopplysninger",
+      "contact-list": {
+        "title": "Kunder",
+        "labels": {
+          "full-name": "Fullt navn",
+          "login": "Innlogging",
+          "email": "E-post",
+          "birthday": "Fødselsdag"
+        }
+      },
+      "contact-detail": {
+        "subtitle": "Kontodetaljer",
+        "header": "Brukerinformasjon",
+        "commands": {
+          "anonymize": {
+            "label": "Anonymiser data",
+            "message": {
+              "title": "Bekreftelse av anonymisering",
+              "text": "Er du sikker på at du vil anonymisere personopplysningene i kontoen din? All informasjon vil bli anonymisert"
+            }
+          },
+          "download": {
+            "label": "Last ned data"
+          }
+        }
+      }
+    }
+  },
+  "permissions": {
+    "gdpr:access": "Åpne GDPR-menyen",
+    "gdpr:anonymize": "Anonymiser kontaktinformasjon",
+    "gdpr:download": "Last ned kontaktinformasjon"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "GDPR-passord",
+        "description": "Innstilling for GDPR-passord"
+      },
+      "GDPREnabled": {
+        "title": "GDPR aktivert",
+        "description": "Innstilling for GDPR-aktivering"
+      }
+    }
+  }
+}
