@@ -7,7 +7,7 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="VirtoCommerce.OrdersModule.Core" Version="3.862.0" />
+    <PackageReference Include="VirtoCommerce.OrdersModule.Core" Version="3.830.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.GDPR.Core\VirtoCommerce.GDPR.Core.csproj" />
