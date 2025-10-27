@@ -8,9 +8,9 @@ using VirtoCommerce.CustomerModule.Core.Services;
 using VirtoCommerce.GDPR.Core.Services;
 using VirtoCommerce.OrdersModule.Core.Model.Search;
 using VirtoCommerce.OrdersModule.Core.Services;
+using VirtoCommerce.Platform.Core.ChangeLog;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Security;
-using VirtoCommerce.Platform.Data.Repositories;
 
 namespace VirtoCommerce.GDPR.Data.Services
 {
@@ -23,7 +23,7 @@ namespace VirtoCommerce.GDPR.Data.Services
         private readonly string _anonymName = "Anonymized";
         private readonly string _anonymPostalCode = "000000";
         private readonly string _anonymPhone = "+00000000000";
-        private readonly IPlatformRepository _platformRepository;
+        private readonly IChangeLogService _changeLogService;
 
         /// <summary>
         /// Max count of customer order download data
@@ -35,13 +35,13 @@ namespace VirtoCommerce.GDPR.Data.Services
             ICustomerOrderSearchService customerOrderSearchService,
             ICustomerOrderService customerOrderService,
             Func<UserManager<ApplicationUser>> userManager,
-            IPlatformRepository platformRepository)
+            IChangeLogService changeLogService)
         {
             _memberService = memberService;
             _customerOrderSearchService = customerOrderSearchService;
             _customerOrderService = customerOrderService;
             _userManagerFactory = userManager;
-            _platformRepository = platformRepository;
+            _changeLogService = changeLogService;
         }
 
         public async Task<Contact> AnonymizeContactDataAsync(string id)
@@ -140,7 +140,7 @@ namespace VirtoCommerce.GDPR.Data.Services
             foreach (var user in contact.SecurityAccounts)
             {
                 await SaveUserChangesAsync(user);
-                await _platformRepository.DeleteOperationLogsByUserIdAsync(user.Id);
+                await _changeLogService.DeleteOperationLogsByUserIdAsync(user.Id);
             }
 
             return contact;

@@ -8,7 +8,7 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.913.0-alpha.13154-vcst-4101-data-anonymization" />
+    <PackageReference Include="VirtoCommerce.Platform.Security" Version="3.913.0-alpha.13155-vcst-4101-data-anonymization" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.GDPR.Core\VirtoCommerce.GDPR.Core.csproj" />
