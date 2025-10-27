@@ -8,7 +8,6 @@ using VirtoCommerce.CustomerModule.Core.Services;
 using VirtoCommerce.GDPR.Core.Services;
 using VirtoCommerce.OrdersModule.Core.Model.Search;
 using VirtoCommerce.OrdersModule.Core.Services;
-using VirtoCommerce.Platform.Core.ChangeLog;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Security;
 
@@ -19,11 +18,11 @@ namespace VirtoCommerce.GDPR.Data.Services
         private readonly IMemberService _memberService;
         private readonly ICustomerOrderSearchService _customerOrderSearchService;
         private readonly ICustomerOrderService _customerOrderService;
+        private readonly IOperationLogService _operationLogService;
         private readonly Func<UserManager<ApplicationUser>> _userManagerFactory;
         private readonly string _anonymName = "Anonymized";
         private readonly string _anonymPostalCode = "000000";
         private readonly string _anonymPhone = "+00000000000";
-        private readonly IChangeLogService _changeLogService;
 
         /// <summary>
         /// Max count of customer order download data
@@ -34,14 +33,14 @@ namespace VirtoCommerce.GDPR.Data.Services
             IMemberService memberService,
             ICustomerOrderSearchService customerOrderSearchService,
             ICustomerOrderService customerOrderService,
-            Func<UserManager<ApplicationUser>> userManager,
-            IChangeLogService changeLogService)
+            IOperationLogService operationLogService,
+            Func<UserManager<ApplicationUser>> userManager)
         {
             _memberService = memberService;
             _customerOrderSearchService = customerOrderSearchService;
             _customerOrderService = customerOrderService;
+            _operationLogService = operationLogService;
             _userManagerFactory = userManager;
-            _changeLogService = changeLogService;
         }
 
         public async Task<Contact> AnonymizeContactDataAsync(string id)
@@ -81,7 +80,6 @@ namespace VirtoCommerce.GDPR.Data.Services
             {
                 user.UserName = $"{_anonymName}_{Guid.NewGuid():N}";
                 user.Email = GetRandomEmail();
-                user.IsAnonymised = true;
             }
 
             foreach (var result in customerOrdersSearchResult.Results)
@@ -138,11 +136,14 @@ namespace VirtoCommerce.GDPR.Data.Services
 
             await _memberService.SaveChangesAsync(new Member[] { contact });
             await _customerOrderService.SaveChangesAsync(customerOrdersSearchResult.Results.ToArray());
+
             foreach (var user in contact.SecurityAccounts)
             {
                 await SaveUserChangesAsync(user);
-                await _changeLogService.DeleteOperationLogsByUserIdAsync(user.Id);
             }
+
+            var userIds = contact.SecurityAccounts.Select(x => x.Id).ToArray();
+            await _operationLogService.DeleteOperationLogsByUserIdsAsync(userIds.ToArray());
 
             return contact;
         }

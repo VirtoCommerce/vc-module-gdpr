@@ -8,6 +8,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="VirtoCommerce.CustomerModule.Core" Version="3.817.0" />
-	<PackageReference Include="VirtoCommerce.Platform.Core" Version="3.913.0-alpha.13155-vcst-4101-data-anonymization" />
+	<PackageReference Include="VirtoCommerce.Platform.Core" Version="3.912.0" />
   </ItemGroup>
 </Project>

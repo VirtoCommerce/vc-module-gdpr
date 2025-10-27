@@ -14,6 +14,7 @@ namespace VirtoCommerce.GDPR.Web
 
         public void Initialize(IServiceCollection serviceCollection)
         {
+            serviceCollection.AddTransient<IOperationLogService, OperationLogService>();
             serviceCollection.AddTransient<IDownloadContactDataService, DownloadContactDataService>();
             serviceCollection.AddTransient<IAnonymizeContactDataService, AnonymizeContactDataService>();
         }
