@@ -81,6 +81,7 @@ namespace VirtoCommerce.GDPR.Data.Services
             {
                 user.UserName = $"{_anonymName}_{Guid.NewGuid():N}";
                 user.Email = GetRandomEmail();
+                user.IsAnonymised = true;
             }
 
             foreach (var result in customerOrdersSearchResult.Results)
