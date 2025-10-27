@@ -15,18 +15,25 @@ public class OperationLogService(
     /// </summary>
     public async Task DeleteOperationLogsByUserIdsAsync(string[] userIds)
     {
-        var searchCriteria = new ChangeLogSearchCriteria()
+        const int batchSize = 1000;
+        var searchCriteria = new ChangeLogSearchCriteria
         {
             ObjectType = "ApplicationUser",
             ObjectIds = userIds,
+            Take = batchSize,
         };
 
-        var searchResult = await searchService.SearchAsync(searchCriteria);
-
-        if (searchResult.Results.Count > 0)
+        int foundCount;
+        do
         {
+            var searchResult = await searchService.SearchAsync(searchCriteria);
             var operationLogIds = searchResult.Results.Select(x => x.Id).ToArray();
-            await changeLogService.DeleteAsync(operationLogIds);
-        }
+            foundCount = operationLogIds.Length;
+
+            if (foundCount > 0)
+            {
+                await changeLogService.DeleteAsync(operationLogIds);
+            }
+        } while (foundCount == batchSize);
     }
 }
