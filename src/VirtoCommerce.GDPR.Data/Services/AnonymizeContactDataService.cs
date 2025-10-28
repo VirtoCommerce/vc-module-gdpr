@@ -147,7 +147,7 @@ namespace VirtoCommerce.GDPR.Data.Services
             }
 
             var userIds = contact.SecurityAccounts.Select(x => x.Id).ToArray();
-            await DeleteChangeLogRecordsAsync<ApplicationUser>(userIds);
+            await DeleteChangeLogRecordsAsync(userIds);
 
             return contact;
         }
@@ -163,10 +163,12 @@ namespace VirtoCommerce.GDPR.Data.Services
             return $"{Guid.NewGuid():N}@{Guid.NewGuid():N}.com";
         }
 
-        private async Task DeleteChangeLogRecordsAsync<TObjectType>(IList<string> objectIds, int batchSize = 100)
+        private async Task DeleteChangeLogRecordsAsync(IList<string> objectIds)
         {
+            const int batchSize = 100;
+
             var searchCriteria = AbstractTypeFactory<ChangeLogSearchCriteria>.TryCreateInstance();
-            searchCriteria.ObjectType = typeof(TObjectType).Name;
+            searchCriteria.ObjectType = nameof(ApplicationUser);
             searchCriteria.ObjectIds = objectIds;
             searchCriteria.Take = batchSize;
 
