@@ -147,7 +147,7 @@ namespace VirtoCommerce.GDPR.Data.Services
             }
 
             var userIds = contact.SecurityAccounts.Select(x => x.Id).ToArray();
-            await DeleteChangeLogRecordsAsync(userIds);
+            await DeleteUserChangeLogRecordsAsync(userIds);
 
             return contact;
         }
@@ -163,7 +163,7 @@ namespace VirtoCommerce.GDPR.Data.Services
             return $"{Guid.NewGuid():N}@{Guid.NewGuid():N}.com";
         }
 
-        private async Task DeleteChangeLogRecordsAsync(IList<string> objectIds)
+        private async Task DeleteUserChangeLogRecordsAsync(IList<string> objectIds)
         {
             const int batchSize = 100;
 
