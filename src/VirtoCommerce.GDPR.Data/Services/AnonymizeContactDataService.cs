@@ -147,7 +147,7 @@ namespace VirtoCommerce.GDPR.Data.Services
             }
 
             var userIds = contact.SecurityAccounts.Select(x => x.Id).ToArray();
-            await DeleteOperationLogsAsync<ApplicationUser>(userIds.ToArray());
+            await DeleteChangeLogRecordsAsync<ApplicationUser>(userIds);
 
             return contact;
         }
@@ -163,28 +163,27 @@ namespace VirtoCommerce.GDPR.Data.Services
             return $"{Guid.NewGuid():N}@{Guid.NewGuid():N}.com";
         }
 
-        private async Task DeleteOperationLogsAsync<TObjectType>(IList<string> objectIds, int batchSize = 100)
+        private async Task DeleteChangeLogRecordsAsync<TObjectType>(IList<string> objectIds, int batchSize = 100)
         {
-            var searchCriteria = new ChangeLogSearchCriteria
-            {
-                ObjectType = typeof(TObjectType).Name,
-                ObjectIds = objectIds,
-                Take = batchSize,
-            };
+            var searchCriteria = AbstractTypeFactory<ChangeLogSearchCriteria>.TryCreateInstance();
+            searchCriteria.ObjectType = typeof(TObjectType).Name;
+            searchCriteria.ObjectIds = objectIds;
+            searchCriteria.Take = batchSize;
 
-            int foundCount;
+            var searchResult = await _changeLogSearchService.SearchAsync(searchCriteria);
+
             do
             {
-                var searchResult = await _changeLogSearchService.SearchAsync(searchCriteria);
-                var operationLogIds = searchResult.Results.Select(x => x.Id).ToArray();
-                foundCount = operationLogIds.Length;
+                var ids = searchResult.Results.Select(x => x.Id).ToArray();
 
-                if (foundCount > 0)
+                if (ids.Length > 0)
                 {
-                    await _changeLogService.DeleteAsync(operationLogIds);
+                    await _changeLogService.DeleteAsync(ids);
                 }
             }
-            while (foundCount == batchSize);
+            while (searchCriteria.Take > 0 &&
+                   searchResult.Results.Count == searchCriteria.Take &&
+                   searchResult.Results.Count != searchResult.TotalCount);
         }
     }
 }
