@@ -176,13 +176,12 @@ namespace VirtoCommerce.GDPR.Data.Services
             do
             {
                 var searchResult = await _changeLogSearchService.SearchAsync(searchCriteria);
-                var ids = searchResult.Results.Select(x => x.Id).ToArray();
-
-                currentCount = ids.Length;
+                currentCount = searchResult.Results.Count;
                 totalCount = searchResult.TotalCount;
 
                 if (currentCount > 0)
                 {
+                    var ids = searchResult.Results.Select(x => x.Id).ToArray();
                     await _changeLogService.DeleteAsync(ids);
                 }
             }
