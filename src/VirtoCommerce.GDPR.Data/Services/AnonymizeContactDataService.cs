@@ -146,8 +146,11 @@ namespace VirtoCommerce.GDPR.Data.Services
                 await SaveUserChangesAsync(user);
             }
 
-            var userIds = contact.SecurityAccounts.Select(x => x.Id).ToArray();
-            await DeleteUserChangeLogRecordsAsync(userIds);
+            if (contact.SecurityAccounts.Count > 0)
+            {
+                var userIds = contact.SecurityAccounts.Select(x => x.Id).ToArray();
+                await DeleteUserChangeLogRecordsAsync(userIds);
+            }
 
             return contact;
         }
@@ -163,13 +166,13 @@ namespace VirtoCommerce.GDPR.Data.Services
             return $"{Guid.NewGuid():N}@{Guid.NewGuid():N}.com";
         }
 
-        private async Task DeleteUserChangeLogRecordsAsync(IList<string> objectIds)
+        private async Task DeleteUserChangeLogRecordsAsync(IList<string> userIds)
         {
             const int batchSize = 100;
 
             var searchCriteria = AbstractTypeFactory<ChangeLogSearchCriteria>.TryCreateInstance();
             searchCriteria.ObjectType = nameof(ApplicationUser);
-            searchCriteria.ObjectIds = objectIds;
+            searchCriteria.ObjectIds = userIds;
             searchCriteria.Take = batchSize;
 
             int currentCount;
@@ -187,8 +190,7 @@ namespace VirtoCommerce.GDPR.Data.Services
                     await _changeLogService.DeleteAsync(ids);
                 }
             }
-            while (searchCriteria.Take > 0 &&
-                   currentCount == searchCriteria.Take &&
+            while (currentCount == batchSize &&
                    currentCount != totalCount);
         }
     }
