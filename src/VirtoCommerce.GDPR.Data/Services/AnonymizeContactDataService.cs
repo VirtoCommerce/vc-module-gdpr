@@ -170,8 +170,8 @@ namespace VirtoCommerce.GDPR.Data.Services
             searchCriteria.ObjectIds = objectIds;
             searchCriteria.Take = batchSize;
 
-            var currentCount = 0;
-            var totalCount = 0;
+            int currentCount;
+            int totalCount;
 
             do
             {
