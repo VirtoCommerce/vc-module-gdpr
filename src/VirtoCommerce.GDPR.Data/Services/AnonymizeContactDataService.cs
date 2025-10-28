@@ -170,20 +170,25 @@ namespace VirtoCommerce.GDPR.Data.Services
             searchCriteria.ObjectIds = objectIds;
             searchCriteria.Take = batchSize;
 
-            var searchResult = await _changeLogSearchService.SearchAsync(searchCriteria);
+            var currentCount = 0;
+            var totalCount = 0;
 
             do
             {
+                var searchResult = await _changeLogSearchService.SearchAsync(searchCriteria);
                 var ids = searchResult.Results.Select(x => x.Id).ToArray();
 
-                if (ids.Length > 0)
+                currentCount = ids.Length;
+                totalCount = searchResult.TotalCount;
+
+                if (currentCount > 0)
                 {
                     await _changeLogService.DeleteAsync(ids);
                 }
             }
             while (searchCriteria.Take > 0 &&
-                   searchResult.Results.Count == searchCriteria.Take &&
-                   searchResult.Results.Count != searchResult.TotalCount);
+                   currentCount == searchCriteria.Take &&
+                   currentCount != totalCount);
         }
     }
 }
