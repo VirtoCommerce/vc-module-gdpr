@@ -8,6 +8,7 @@ using VirtoCommerce.CustomerModule.Core.Services;
 using VirtoCommerce.GDPR.Core.Services;
 using VirtoCommerce.OrdersModule.Core.Model.Search;
 using VirtoCommerce.OrdersModule.Core.Services;
+using VirtoCommerce.Platform.Core.ChangeLog;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.Platform.Core.Security;
 
@@ -18,7 +19,8 @@ namespace VirtoCommerce.GDPR.Data.Services
         private readonly IMemberService _memberService;
         private readonly ICustomerOrderSearchService _customerOrderSearchService;
         private readonly ICustomerOrderService _customerOrderService;
-        private readonly IOperationLogService _operationLogService;
+        private readonly IChangeLogService _changeLogService;
+        private readonly IChangeLogSearchService _changeLogSearchService;
         private readonly Func<UserManager<ApplicationUser>> _userManagerFactory;
         private readonly string _anonymName = "Anonymized";
         private readonly string _anonymPostalCode = "000000";
@@ -33,13 +35,15 @@ namespace VirtoCommerce.GDPR.Data.Services
             IMemberService memberService,
             ICustomerOrderSearchService customerOrderSearchService,
             ICustomerOrderService customerOrderService,
-            IOperationLogService operationLogService,
+            IChangeLogService changeLogService,
+            IChangeLogSearchService changeLogSearchService,
             Func<UserManager<ApplicationUser>> userManager)
         {
             _memberService = memberService;
             _customerOrderSearchService = customerOrderSearchService;
             _customerOrderService = customerOrderService;
-            _operationLogService = operationLogService;
+            _changeLogService = changeLogService;
+            _changeLogSearchService = changeLogSearchService;
             _userManagerFactory = userManager;
         }
 
@@ -143,7 +147,7 @@ namespace VirtoCommerce.GDPR.Data.Services
             }
 
             var userIds = contact.SecurityAccounts.Select(x => x.Id).ToArray();
-            await _operationLogService.DeleteOperationLogsByUserIdsAsync(userIds.ToArray());
+            await DeleteOperationLogsAsync<ApplicationUser>(userIds.ToArray());
 
             return contact;
         }
@@ -157,6 +161,30 @@ namespace VirtoCommerce.GDPR.Data.Services
         private string GetRandomEmail()
         {
             return $"{Guid.NewGuid():N}@{Guid.NewGuid():N}.com";
+        }
+
+        private async Task DeleteOperationLogsAsync<TObjectType>(IList<string> objectIds, int batchSize = 100)
+        {
+            var searchCriteria = new ChangeLogSearchCriteria
+            {
+                ObjectType = typeof(TObjectType).Name,
+                ObjectIds = objectIds,
+                Take = batchSize,
+            };
+
+            int foundCount;
+            do
+            {
+                var searchResult = await _changeLogSearchService.SearchAsync(searchCriteria);
+                var operationLogIds = searchResult.Results.Select(x => x.Id).ToArray();
+                foundCount = operationLogIds.Length;
+
+                if (foundCount > 0)
+                {
+                    await _changeLogService.DeleteAsync(operationLogIds);
+                }
+            }
+            while (foundCount == batchSize);
         }
     }
 }

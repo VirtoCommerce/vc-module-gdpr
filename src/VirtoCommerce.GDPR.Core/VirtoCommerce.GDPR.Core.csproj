@@ -8,6 +8,5 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="VirtoCommerce.CustomerModule.Core" Version="3.817.0" />
-	<PackageReference Include="VirtoCommerce.Platform.Core" Version="3.912.0" />
   </ItemGroup>
 </Project>
