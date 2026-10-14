@@ -359,3 +359,5 @@ MigrationBackup/
 # Virto
 *.nupkg
 *.zip
+# Admin Shell module UI build output (built from src/VirtoCommerce.GDPR.Web/vue)
+src/VirtoCommerce.GDPR.Web/plugins/

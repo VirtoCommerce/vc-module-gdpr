@@ -1,0 +1,17 @@
+{
+  // GDPR admin UI for the Admin Shell host (Module Federation remote)
+  "remote": { "name": "gdpr_admin", "exposed": "./Module" },
+  "contributions": {
+    "menu": [
+      {
+        "id": "gdpr",
+        "sectionId": "orders",
+        "title": "GDPR",
+        "icon": "lucide-key-round",
+        "route": "/gdpr",
+        "permission": "gdpr:access",
+        "priority": 100
+      }
+    ]
+  }
+}

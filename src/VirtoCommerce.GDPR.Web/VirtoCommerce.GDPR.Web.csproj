@@ -14,4 +14,17 @@
     <ProjectReference Include="..\VirtoCommerce.GDPR.Core\VirtoCommerce.GDPR.Core.csproj" />
     <ProjectReference Include="..\VirtoCommerce.GDPR.Data\VirtoCommerce.GDPR.Data.csproj" />
   </ItemGroup>
+  <!-- Admin Shell module UI: Vue sources in vue/, built into plugins/admin-shell/ -->
+  <ItemGroup>
+    <Compile Remove="vue\**" />
+    <Content Remove="vue\**" />
+    <EmbeddedResource Remove="vue\**" />
+    <None Remove="vue\**" />
+    <Content Remove="plugins\**" />
+    <None Remove="plugins\**" />
+    <AdminShellPlugin Include="plugins\**" />
+  </ItemGroup>
+  <Target Name="CopyAdminShellPluginOnPublish" AfterTargets="Publish">
+    <Copy SourceFiles="@(AdminShellPlugin)" DestinationFiles="$(PublishDir)\..\%(Identity)" />
+  </Target>
 </Project>
