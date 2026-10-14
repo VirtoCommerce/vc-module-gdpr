@@ -1,5 +1,4 @@
 {
-  // GDPR admin UI for the Admin Shell host (Module Federation remote)
   "remote": { "name": "gdpr_admin", "exposed": "./Module" },
   "contributions": {
     "menu": [
