@@ -1,0 +1,23 @@
+{
+  "GDPR": {
+    "LIST": {
+      "TITLE": "GDPR",
+      "SUBTITLE": "ניהול מידע אישי",
+      "EMPTY": "לא נמצאו לקוחות",
+      "REFRESH": "רענון"
+    },
+    "FIELDS": {
+      "FULL_NAME": "שם מלא",
+      "LOGIN": "שם משתמש",
+      "EMAIL": "דוא״ל",
+      "BIRTHDAY": "תאריך לידה"
+    },
+    "DETAILS": {
+      "SUBTITLE": "פרטי החשבון",
+      "HEADER": "פרטי המשתמש",
+      "ANONYMIZE": "התממת מידע",
+      "ANONYMIZE_CONFIRM": "האם להתמים את המידע האישי בחשבון זה? כל המידע יעבור התממה.",
+      "DOWNLOAD": "הורדת מידע"
+    }
+  }
+}

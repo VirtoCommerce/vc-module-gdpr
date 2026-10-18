@@ -1,0 +1,23 @@
+{
+  "GDPR": {
+    "LIST": {
+      "TITLE": "GDPR",
+      "SUBTITLE": "Henkilötietojen hallinta",
+      "EMPTY": "Asiakkaita ei löytynyt",
+      "REFRESH": "Päivitä"
+    },
+    "FIELDS": {
+      "FULL_NAME": "Koko nimi",
+      "LOGIN": "Kirjautuminen",
+      "EMAIL": "Sähköposti",
+      "BIRTHDAY": "Syntymäpäivä"
+    },
+    "DETAILS": {
+      "SUBTITLE": "Tilin tiedot",
+      "HEADER": "Käyttäjän tiedot",
+      "ANONYMIZE": "Anonymisoi tiedot",
+      "ANONYMIZE_CONFIRM": "Haluatko varmasti anonymisoida tämän tilin henkilötiedot? Kaikki tiedot anonymisoidaan.",
+      "DOWNLOAD": "Lataa tiedot"
+    }
+  }
+}
