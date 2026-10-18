@@ -1,0 +1,23 @@
+{
+  "GDPR": {
+    "LIST": {
+      "TITLE": "RODO",
+      "SUBTITLE": "Zarządzanie danymi osobowymi",
+      "EMPTY": "Nie znaleziono klientów",
+      "REFRESH": "Odśwież"
+    },
+    "FIELDS": {
+      "FULL_NAME": "Pełne imię i nazwisko",
+      "LOGIN": "Login",
+      "EMAIL": "E-mail",
+      "BIRTHDAY": "Data urodzenia"
+    },
+    "DETAILS": {
+      "SUBTITLE": "Szczegóły konta",
+      "HEADER": "Informacje o użytkowniku",
+      "ANONYMIZE": "Anonimizuj dane",
+      "ANONYMIZE_CONFIRM": "Czy na pewno zanonimizować dane osobowe tego konta? Wszystkie informacje zostaną zanonimizowane.",
+      "DOWNLOAD": "Pobierz dane"
+    }
+  }
+}
