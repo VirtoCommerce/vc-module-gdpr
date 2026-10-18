@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "gdpr:access": "פתיחת תפריט GDPR",
+    "gdpr:anonymize": "הפיכת נתוני איש הקשר לאנונימיים",
+    "gdpr:download": "הורדת נתוני איש הקשר"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "סיסמת GDPR",
+        "description": "הגדרת סיסמת GDPR"
+      },
+      "GDPREnabled": {
+        "title": "GDPR מופעל",
+        "description": "הגדרת הפעלת GDPR"
+      }
+    }
+  }
+}
