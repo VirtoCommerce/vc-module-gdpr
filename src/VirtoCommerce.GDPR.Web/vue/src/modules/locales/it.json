@@ -1,0 +1,23 @@
+{
+  "GDPR": {
+    "LIST": {
+      "TITLE": "GDPR",
+      "SUBTITLE": "Gestione dei dati personali",
+      "EMPTY": "Nessun cliente trovato",
+      "REFRESH": "Aggiorna"
+    },
+    "FIELDS": {
+      "FULL_NAME": "Nome completo",
+      "LOGIN": "Nome utente",
+      "EMAIL": "Email",
+      "BIRTHDAY": "Data di nascita"
+    },
+    "DETAILS": {
+      "SUBTITLE": "Dettagli dell'account",
+      "HEADER": "Informazioni utente",
+      "ANONYMIZE": "Anonimizza i dati",
+      "ANONYMIZE_CONFIRM": "Anonimizzare i dati personali di questo account? Tutte le informazioni verranno anonimizzate.",
+      "DOWNLOAD": "Scarica i dati"
+    }
+  }
+}

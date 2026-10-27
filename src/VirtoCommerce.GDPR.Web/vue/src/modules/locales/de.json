@@ -1,0 +1,23 @@
+{
+  "GDPR": {
+    "LIST": {
+      "TITLE": "DSGVO",
+      "SUBTITLE": "Verwaltung personenbezogener Daten",
+      "EMPTY": "Keine Kunden gefunden",
+      "REFRESH": "Aktualisieren"
+    },
+    "FIELDS": {
+      "FULL_NAME": "Vollständiger Name",
+      "LOGIN": "Anmeldung",
+      "EMAIL": "E-Mail",
+      "BIRTHDAY": "Geburtstag"
+    },
+    "DETAILS": {
+      "SUBTITLE": "Kontodetails",
+      "HEADER": "Benutzerinformationen",
+      "ANONYMIZE": "Daten anonymisieren",
+      "ANONYMIZE_CONFIRM": "Möchten Sie die personenbezogenen Daten in diesem Konto wirklich anonymisieren? Alle Informationen werden anonymisiert.",
+      "DOWNLOAD": "Daten herunterladen"
+    }
+  }
+}

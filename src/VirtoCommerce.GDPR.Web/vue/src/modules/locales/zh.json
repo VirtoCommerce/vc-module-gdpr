@@ -1,0 +1,23 @@
+{
+  "GDPR": {
+    "LIST": {
+      "TITLE": "GDPR",
+      "SUBTITLE": "个人数据管理",
+      "EMPTY": "未找到客户",
+      "REFRESH": "刷新"
+    },
+    "FIELDS": {
+      "FULL_NAME": "全名",
+      "LOGIN": "登录名",
+      "EMAIL": "电子邮箱",
+      "BIRTHDAY": "生日"
+    },
+    "DETAILS": {
+      "SUBTITLE": "账户详情",
+      "HEADER": "用户信息",
+      "ANONYMIZE": "匿名化数据",
+      "ANONYMIZE_CONFIRM": "确定要匿名化此账户中的个人数据吗？所有信息都将被匿名化。",
+      "DOWNLOAD": "下载数据"
+    }
+  }
+}

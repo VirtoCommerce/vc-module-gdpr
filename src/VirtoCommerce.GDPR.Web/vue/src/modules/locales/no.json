@@ -1,0 +1,23 @@
+{
+  "GDPR": {
+    "LIST": {
+      "TITLE": "GDPR",
+      "SUBTITLE": "Administrasjon av personopplysninger",
+      "EMPTY": "Fant ingen kunder",
+      "REFRESH": "Oppdater"
+    },
+    "FIELDS": {
+      "FULL_NAME": "Fullt navn",
+      "LOGIN": "Innlogging",
+      "EMAIL": "E-post",
+      "BIRTHDAY": "Fødselsdag"
+    },
+    "DETAILS": {
+      "SUBTITLE": "Kontodetaljer",
+      "HEADER": "Brukerinformasjon",
+      "ANONYMIZE": "Anonymiser data",
+      "ANONYMIZE_CONFIRM": "Er du sikker på at du vil anonymisere personopplysningene i denne kontoen? All informasjon blir anonymisert.",
+      "DOWNLOAD": "Last ned data"
+    }
+  }
+}

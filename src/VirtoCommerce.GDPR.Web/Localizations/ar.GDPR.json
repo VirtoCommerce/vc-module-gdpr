@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "gdpr:access": "فتح قائمة GDPR",
+    "gdpr:anonymize": "إخفاء هوية بيانات جهة الاتصال",
+    "gdpr:download": "تنزيل بيانات جهة الاتصال"
+  },
+  "settings": {
+    "GDPR": {
+      "GDPRPassword": {
+        "title": "كلمة مرور GDPR",
+        "description": "إعداد كلمة مرور GDPR."
+      },
+      "GDPREnabled": {
+        "title": "تفعيل GDPR",
+        "description": "يحدد ما إذا كانت وحدة GDPR مفعّلة."
+      }
+    }
+  }
+}

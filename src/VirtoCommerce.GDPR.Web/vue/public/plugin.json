@@ -1,0 +1,16 @@
+{
+  "remote": { "name": "gdpr_admin", "exposed": "./Module" },
+  "contributions": {
+    "menu": [
+      {
+        "id": "gdpr",
+        "sectionId": "configuration",
+        "title": "GDPR",
+        "icon": "lucide-key-round",
+        "route": "/gdpr",
+        "permission": "gdpr:access",
+        "priority": 100
+      }
+    ]
+  }
+}
