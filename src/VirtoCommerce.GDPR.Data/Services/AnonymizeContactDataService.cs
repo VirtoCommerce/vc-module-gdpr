@@ -141,9 +141,9 @@ namespace VirtoCommerce.GDPR.Data.Services
             await _memberService.SaveChangesAsync(new Member[] { contact });
             await _customerOrderService.SaveChangesAsync(customerOrdersSearchResult.Results.ToArray());
 
-            foreach (var user in contact.SecurityAccounts)
+            foreach (var account in contact.SecurityAccounts)
             {
-                await SaveUserChangesAsync(user);
+                await SaveUserChangesAsync(account);
             }
 
             if (contact.SecurityAccounts.Count > 0)
@@ -155,9 +155,21 @@ namespace VirtoCommerce.GDPR.Data.Services
             return contact;
         }
 
-        private async Task SaveUserChangesAsync(ApplicationUser user)
+        private async Task SaveUserChangesAsync(ApplicationUser account)
         {
             using var userManager = _userManagerFactory();
+
+            // Member security accounts may carry fewer user details than the stored user,
+            // so save the user loaded from the user manager with only the anonymized fields changed
+            var user = await userManager.FindByIdAsync(account.Id);
+            if (user == null)
+            {
+                return;
+            }
+
+            user.UserName = account.UserName;
+            user.Email = account.Email;
+
             await userManager.UpdateAsync(user);
         }
 
